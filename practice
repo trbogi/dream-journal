@@ -1,0 +1,15 @@
+function scramble(str1, str2) {
+    var newWord = ''
+    for (let letter of str2){
+      if (!str1.includes(letter)){
+        newWord += letter
+      }
+    }
+    if (newWord === str2){
+        return true;
+      }else{
+         return false;
+      }
+  }
+
+  console.log(scramble('scriptjavx','javascript'))

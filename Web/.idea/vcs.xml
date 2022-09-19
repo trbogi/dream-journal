@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/api-wars-deployment-general-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/api-wars-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/application-process-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ask-mate-1-python-benedekmolnar " vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ask-mate-2-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ask-mate-3-python-Guszti9" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/branched-off-general-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/callback-hell-javascript-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/codecool-series-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/codewars-javascript-6-kyu-general-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/codewars-javascript-7-kyu-general-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/codewars-sql-6-kyu-general-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/codewars-sql-7-kyu-general-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cool-note-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/curling-general-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/flying-circus-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/freestyle-javascript-game-javascript-Nitram137" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gitws" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/hello-js-javascript-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/light-and-dark-javascript-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/metamorphosis-javascript-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/minesweeper-javascript-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/multi-color-buttons-javascript-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/northwind-traders-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/proman-1-python-benedekmolnar" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/proman-2-python-Nitram137" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/python-on-steroids-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/request-counter-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/setup-postgresql-python-trbogi " vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/super-sprinter-3000-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/syringe-python-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tech-interview-workbook-trbogi2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/untrusted-javascript-trbogi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/you-ve-been-hacked-javascript-trbogi" vcs="Git" />
+  </component>
+</project>

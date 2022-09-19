@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Cool Note</title>
+    </head>
+    <body>
+        <h1>Cool Note</h1>
+            <p>
+                {% if note is not none %}
+                    {{ note }}
+                {% else %}
+                    There is no saved note.
+                {% endif %}
+                </p>
+            <p>
+                <small>Edited {{ edit_count }} times.</small>
+            </p>
+        <a href="/note">
+            {% if note is none: %}
+                Add
+            {% else: %}
+                Edit
+            {%endif %}
+            note
+        </a>
+    </body>
+</html>

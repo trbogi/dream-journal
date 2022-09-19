@@ -1,0 +1,674 @@
+{\rtf1\ansi\ansicpg1250\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Menlo-Italic;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red70\green137\blue204;
+\red202\green202\blue202;\red85\green129\blue224;\red212\green214\blue154;\red140\green211\blue254;\red183\green111\blue179;
+\red167\green197\blue152;\red67\green192\blue160;\red194\green126\blue101;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0\c0;\cssrgb\c33725\c61176\c83922;
+\cssrgb\c83137\c83137\c83137;\cssrgb\c40392\c58824\c90196;\cssrgb\c86275\c86275\c66667;\cssrgb\c61176\c86275\c99608;\cssrgb\c77255\c52549\c75294;
+\cssrgb\c70980\c80784\c65882;\cssrgb\c30588\c78824\c69020;\cssrgb\c80784\c56863\c47059;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww13060\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 # Programming Basics questions
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 ## Computer science
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 ### Data structures
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### What is the purpose of a list (array in some programming languages) data structure? Name some methods of it!
+\f1\b0 \strokec5 \
+A list is an abstract data type that represents a finite number of ordered values, where the same value may occur more than once.\
+(Python\'92s) lists are implemented as dynamic arrays. This means a list allows elements to be added or removed, and the list will automatically adjust the backing store that holds these elements by allocating or releasing memory.\
+Python lists can hold arbitrary elements\'97everything is an object in Python, including functions. Therefore, you can mix and match different kinds of data types and store them all in a single list.\
+    append()    Adds an element at the end of the list\
+    clear() Removes all the elements from the list\
+    copy()  Returns a copy of the list\
+    count() Returns the number of elements with the specified value\
+    extend()    Add the elements of a list (or any iterable), to the end of the current list\
+    index() Returns the index of the first element with the specified value\
+    insert()    Adds an element at the specified position\
+    pop()   Removes the element at the specified position\
+    remove()    Removes the first item with the specified value\
+    reverse()   Reverses the order of the list\
+    sort()  Sorts the list\
+
+\f0\b \strokec4 #### What is the difference between a list/array and a set?
+\f1\b0 \strokec5 \
+List                                            Set\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 1.\strokec5  The List is an ordered sequence.             1. The Set is an unordered sequence.\
+                                                (Most implementations are unordered, but it is implementation specific.)\
+\strokec6 2.\strokec5  List allows duplicate elements               2. Set doesn\'92t allow duplicate elements.\
+\strokec6 3.\strokec5  Elements by their position can be accessed.  3. Position access to elements is not\
+                                                    allowed.\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What is the purpose and methods of a dictionary/map data structure?
+\f1\b0 \strokec5 \
+Dictionary is an unordered collection of data values, used to store data values like a map, which, unlike other Data Types that hold only a single value as an element, Dictionary holds key:value pair. Instead of using the numerical index of the data, we can use the dictionary names (keys) to return values. Typically, the keys in a dictionary must be simple types (such as integers or strings) while the values can be of any type. Keys in a dictionary must be unique; an attempt to create a duplicate key will typically overwrite the existing value for that key. (A dictionary is changeable and does not allow duplicates.)\
+Methods:\
+    clear() Removes all the elements from the dictionary\
+    copy()  Returns a copy of the dictionary\
+    fromkeys()  Returns a dictionary with the specified keys and value\
+    get()   Returns the value of the specified key\
+    items() Returns a list containing a tuple for each key value pair\
+    keys()  Returns a list containing the dictionary's keys\
+    pop()   Removes the element with the specified key\
+    popitem()   Removes the last inserted key-value pair\
+    setdefault()    Returns the value of the specified key. If the key does not exist: insert the key, with the specified value\
+    update()    Updates the dictionary with the specified key-value pairs\
+    values()    Returns a list of all the values in the dictionary\
+\
+
+\f0\b \strokec4 ### Algorithms
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### Fibonacci sequences. Write a method (or pseudo code), that generates the Fibonacci sequences.
+\f1\b0 \strokec5 \
+Recursive method:\
+```Python\
+    \strokec4 def\strokec5  \strokec7 fibonacci_sequence\strokec5 (\strokec8 n\strokec5 ):\
+        \strokec9 if\strokec5  n == \strokec10 0\strokec5  \strokec4 or\strokec5  n == \strokec10 1\strokec5 :\
+            \strokec9 return\strokec5  n\
+        \strokec9 else\strokec5 :\
+            \strokec9 return\strokec5  fibonacci_sequence(n-\strokec10 1\strokec5 ) + fibonacci_sequence(n-\strokec10 2\strokec5 )\
+```\
+            \
+
+\f0\b \strokec4 #### How do you find a max value in a list/array if you can\'92t use any built-in functions?
+\f1\b0 \strokec5 \
+```Python\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec4 def\strokec5  \strokec7 get_max_value\strokec5 (\strokec8 list\strokec5 ):\
+    max_value = list[\strokec10 0\strokec5 ]\
+    \strokec9 for\strokec5  num \strokec9 in\strokec5  \strokec11 list\strokec5 :\
+        \strokec9 if\strokec5  num > max_value:\
+            max_value = num\
+    \strokec9 return\strokec5  max_value\
+```\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### How do you find the average of values in a list/array if you can\'92t use any built-in functions?
+\f1\b0 \strokec5 \
+def get_mean(list):\
+    sum = 0\
+    element_counter = 0\
+    for element in list:\
+        sum += element\
+        element_counter += 1\
+    mean = sum / element_counter\
+    return mean\
+\
+
+\f0\b \strokec4 #### What do we call an 
+\f2\i\b0 *in-place*
+\f0\i0\b  sort?
+\f1\b0 \strokec5 \
+An in-place algorithm is an algorithm that does not need an extra space and produces an output in the same memory that contains the data by transforming the input \'91in-place\'92. However, a small constant extra space used for variables is allowed.\
+Which Sorting Algorithms are In-Place and which are not? \
+In Place: Bubble sort, Selection Sort, Insertion Sort, Heapsort.\
+Not In-Place: Merge Sort. Note that merge sort requires O(n) extra space.\
+\
+
+\f0\b \strokec4 #### Explain an algorithm which sorts a list!
+\f1\b0 \strokec5 \
+Bubble sort is a sorting algorithm that compares two adjacent elements and swaps them until they are not in the intended order.Just like the movement of air bubbles in the water that rise up to the surface, each element of the array move to the end in each iteration. Therefore, it is called a bubble sort.\
+\
+Suppose we are trying to sort the elements in ascending order.\
+\
+First Iteration (Compare and Swap)\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 1.\strokec5   Starting from the first index, compare the first and the second elements.\
+\strokec6 2.\strokec5   If the first element is greater than the second element, they are swapped.\
+\strokec6 3.\strokec5   Now, compare the second and the third elements. Swap them if they are not in order.\
+\strokec6 4.\strokec5   The above process goes on until the last element.\
+\
+Remaining Iteration\
+The same process goes on for the remaining iterations.\
+After each iteration, the largest element among the unsorted elements is placed at the end.\
+In each iteration, the comparison takes place up to the last unsorted element.\
+The array is sorted when all the unsorted elements are placed at their correct positions.\
+\
+def bubbleSort(arr):\
+    n = len(arr)\
+  \
+    for i in range(n):\
+  \
+        for j in range(0, n-i-1):\
+            if arr[j] > arr[j+1] :\
+                arr[j], arr[j+1] = arr[j+1], arr[j]\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 ### Programming paradigms - procedural
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### What is the call stack?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### What is \'93Stack overflow\'94?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### What are the main parts of a function?
+\f1\b0 \strokec5 \
+In Python, a function is a group of related statements that performs a specific task.\
+Example:\
+def function_name(parameters):\
+    """docstring"""\
+    statement(s)\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 1.\strokec5  Keyword def that marks the start of the function header.\
+\strokec6 2.\strokec5  A function name to uniquely identify the function. Function naming follows the same rules of writing identifiers in Python.\
+\strokec6 3.\strokec5  Parameters (arguments) through which we pass values to a function. They are optional.\
+\strokec6 4.\strokec5  A colon (:) to mark the end of the function header.\
+\strokec6 5.\strokec5  Optional documentation string (docstring) to describe what the function does.\
+\strokec6 6.\strokec5  One or more valid python statements that make up the function body. Statements must have the same indentation level (usually 4 spaces).\
+\strokec6 7.\strokec5  An optional return statement to return a value from the function.\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 ### Programming languages - Python  
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### How do you use a dictionary in Python?
+\f1\b0 \strokec5 \
+Python dictionary is an unordered collection of items. Each item of a dictionary has a key/value pair. Dictionaries are optimized to retrieve values when the key is known.\
+CREATING DICTIONARY - Creating a dictionary is as simple as placing items inside curly braces \{\} separated by commas. An item has a key and a corresponding value that is expressed as a pair (key: value).While the values can be of any data type and can repeat, keys must be of immutable type (string, number or tuple with immutable elements) and must be unique.\
+ACCESSING ELEMENTS - While indexing is used with other data types to access values, a dictionary uses keys. Keys can be used either inside square brackets [] or with the get() method. (my_dict[\strokec12 'age'\strokec5 ], my_dict.get('age'))\
+CHANGING AND ADDING ELEMENTS - Dictionaries are mutable. We can add new items or change the value of existing items using an assignment operator. If the key is already present, then the existing value gets updated. In case the key is not present, a new (key: value) pair is added to the dictionary. (my_dict[\strokec12 'age'\strokec5 ] = 27)\
+REMOVING ELEMENTS - We can remove a particular item in a dictionary by using the pop() method. This method removes an item with the provided key and returns the value.\
+The popitem() method can be used to remove and return an arbitrary (key, value) item pair from the dictionary. \
+All the items can be removed at once, using the clear() method.\
+We can also use the del keyword to remove individual items or the entire dictionary itself.\
+\
+
+\f0\b \strokec4 #### What does it mean that an object is immutable in Python?
+\f1\b0 \strokec5 \
+No change is possible over time. In Python, if the value of an object cannot be changed over time, then it is known as immutable. Once created, the value of these objects is permanent.\
+Objects of built-in type that are immutable are:\
+    Numbers (Integer, Rational, Float, Decimal, Complex & Booleans)\
+    Strings\
+    Tuples\
+    Frozen Sets\
+    User-Defined Classes (It purely depends upon the user to define the characteristics)\
+\
+
+\f0\b \strokec4 #### What is conditional expression in Python?
+\f1\b0 \strokec5 \
+Conditional expressions in Python are if statements. An if statement is the easiest method for making a decision in Python. It simply states that if something is true, Python should perform the steps that follow.\
+Every Python if statement begins with the word if. After the word if comes a condition. A condition simply states what sort of comparison you want Python to make.\
+The condition always ends with a colon (:). (If you don\'92t provide a colon, Python doesn\'92t know that the condition has ended and will continue to look for additional conditions on which to base its decision.) After the colon come any tasks you want Python to perform.\
+With Python, you choose one of two alternatives by using the else clause of the if statement. A clause is an addition to a code block that modifies the way in which it works. Most code blocks support multiple clauses. In this case, the else clause enables you to perform an alternative task, which increases the usefulness of the if statement.\
+\
+
+\f0\b \strokec4 #### What are different types of arguments in Python?
+\f1\b0 \strokec5 \
+Prameters and arguments - Parameters are the variables that are defined or used inside parentheses while defining a function, whereas arguments are the value passed for these parameters while calling a function. Arguments are the values that are passed to the function at run-time so that the function can do the designated task using these values.\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 -\strokec5  Positional argument: When we call a function with some values, these values get assigned to the arguments according to their position.\
+\strokec6 -\strokec5  Keyword argument: Python allows functions to be called using keyword arguments. When we call functions in this way, the order (position) of the arguments can be changed. We can mix positional arguments with keyword arguments during a function call. But we must keep in mind that keyword arguments must follow positional arguments.\
+\strokec6 -\strokec5  Default argument: We can provide a default value to an argument by using the assignment operator (=). It is optional during a call. If a value is provided, it will overwrite the default value. Any number of arguments in a function can have a default value. But once we have a default argument, all the arguments to its right must also have default values.\
+\strokec6 -\strokec5  Arbitary argument: Sometimes, we do not know in advance the number of arguments that will be passed into a function. Python allows us to handle this kind of situation through function calls with an arbitrary number of arguments. In the function definition, we use an asterisk (*) before the parameter name to denote this kind of argument. These arguments get wrapped up into a tuple before being passed into the function.\
+\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What is variable shadowing? (context: variable scope)
+\f1\b0 \strokec5 \
+Variable shadowing occurs when a variable declared within a certain scope (decision block, method, or inner class) has the same name as a variable declared in an outer scope. This outer variable is said to be shadowed by the inner variable, while the inner identifier is said to mask the outer identifier. This can lead to confusion, as it may be unclear which variable subsequent uses of the shadowed variable name refer to, which depends on the name resolution rules of the language. \
+Python resolves this by giving precedence to the variable with the most restricted scope, when inside that scope:\
+\
+\
+
+\f0\b \strokec4 #### What can happen if you try to delete/drop/add an item from a List, while you are iterating over it in Python?
+\f1\b0 \strokec5 \
+When we delete/drop/add an element from a list in Python, it changes the remaining elements\'92 indexing. So if we are iterating over a list and we deleted an element from it while iterating over it, it will cause iterator invalidation and give unexpected results.\
+\
+
+\f0\b \strokec4 #### What is the "golden rule" of variable scoping in Python (context: LEGB)? What is the lifetime of variables?
+\f1\b0 \strokec5 \
+ Scope of variables: Not all variables can be accessed from anywhere in a program. The part of a program where a variable is accessible is called its scope. There are four major types of variable scope and is the basis for the LEGB rule. LEGB stands for Local -> Enclosing -> Global -> Built-in.\
+ \strokec6 -\strokec5  Local: Whenever you define a variable within a function, its scope lies ONLY within the function. It is accessible from the point at which it is defined until the end of the function and exists for as long as the function is executing (Source). Which means its value cannot be changed or even accessed from outside the function.\
+ \strokec6 -\strokec5  Enclosing: A special scope that only exists for nested functions. If the local scope is an inner or nested function, then the enclosing scope is the scope of the outer or enclosing function. This scope contains the names that you define in the enclosing function. The names in the enclosing scope are visible from the code of the inner and enclosing functions.\
+ \strokec6 -\strokec5  Global: Whenever a variable is defined outside any function, it becomes a global variable, and its scope is anywhere within the program. Which means it can be used by any function.\
+ \strokec6 -\strokec5  Built-in: All the special reserved keywords fall under this scope. We can call the keywords anywhere within our program without having to define them before use. Keywords are simply special reserved words. They are kept for specific purposes and cannot be used for any other purpose in the program. (e.g. if, else, elif, raise, pass, continue, False, None,in, from, for, True, while)\
+ LEGB rule: The LEGB rule is a kind of name lookup procedure, which determines the order in which Python looks up names. For example, if you reference a given name, then Python will look that name up sequentially in the local, enclosing, global, and built-in scope. If the name exists, then you\'92ll get the first occurrence of it. Otherwise, you\'92ll get an error.\
+\
+The lifetime of a variable is the period throughout which the variable exits in the\
+memory of your Python program. The lifetime of variables inside a function is\
+as long as the function executes. These local variables are destroyed as soon as\
+the function returns or terminates. This means that the function does not store\
+the values in a variable from one invocation to another.\
+\
+
+\f0\b \strokec4 #### If you need to access the iterator variable after a for loop, how would you do it in Python?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### What type of elements can a list contain in Python?
+\f1\b0 \strokec5 \
+Lists essentially store python objects and because everything in Python is an object, then you can basically store anything in a list.\
+\
+
+\f0\b \strokec4 #### What is slice operator in Python and how to use?
+\f1\b0 \strokec5 \
+It is somewhat a combination between the range function and indexing. A slice is a section (or part) of a collection. We can takes "slices" of lists, strings and tuples. The basic syntax for a slice is square brackets with colons and integers inside "[\strokec12 0:1:2\strokec5 ]".\
+The slice operator has optional arguments. It will automatically start at index 0, stop at the end and step by 1, unless it's declared otherwise.\
+The slice operator [\strokec12 n:m\strokec5 ] returns the part of the string/list from the n\'92th character to the m\'92th character, including the first but excluding the last.\
+There is no Index Out Of Range exception for a slice. A slice is forgiving and shifts any offending index to something legal.\
+\
+
+\f0\b \strokec4 #### What arithmetic operators (+,*,-,/) can be used on lists in Python? What do they do?
+\f1\b0 \strokec5 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 +\strokec5  operator: to combine two lists. (This is also called concatenation.)\
+\strokec6 *\strokec5  operator: repeats a list for the given number of times\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What is the purpose of the in and not in membership operators in Python?
+\f1\b0 \strokec5 \
+Membership operators are operators used to validate the membership of a value. It test for membership in a sequence, such as strings, lists, or tuples.\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 1.\strokec5  'in' operator : The \'91in\'92 operator is used to check if a value exists in a sequence or not. Evaluates to true if it finds a variable in the specified sequence and false otherwise.\
+\strokec6 2.\strokec5  \'91not in\'92 operator- Evaluates to true if it does not finds a variable in the specified sequence and false otherwise.\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What does the + operator mean when used with strings in Python?
+\f1\b0 \strokec5 \
+The + operator joins two or more strings into a single one. This is called concatenation.\
+\
+
+\f0\b \strokec4 #### Explain f strings in Python?
+\f1\b0 \strokec5 \
+PEP 498 introduced a new string formatting mechanism known as Literal String Interpolation or more commonly as F-strings (because of the leading f character preceding the string literal). The idea behind f-strings is to make string interpolation simpler. \
+To create an f-string, prefix the string with the letter \'93 f \'94. The string itself can be formatted in much the same way that you would with str.format(). F-strings provide a concise and convenient way to embed python expressions inside string literals for formatting. \
+f strings use curly braces to store the values which should be formatted into a string. f strings can also use a capital \'93F\'94 to represent a formatted string.\
+\
+
+\f0\b \strokec4 #### Name 4 iterable types in Python!
+\f1\b0 \strokec5 \
+An object capable of returning its members one at a time. \
+Examples of iterables include all sequence types (such as list, str, and tuple) and some non-sequence types like dict, file objects, and objects of any classes you define with an 
+\f0\b \strokec4 __iter__
+\f1\b0 \strokec5 () method or with a 
+\f0\b \strokec4 __getitem__
+\f1\b0 \strokec5 () method that implements Sequence semantics.\
+\
+
+\f0\b \strokec4 #### What is the difference between list/set/dictionary comprehension and a generator expression in Python?
+\f1\b0 \strokec5 \
+List comprehension: It is an elegant way of defining and creating a list. List Comprehension allows us to create a list using for loop with lesser code. What normally takes 3-4 lines of code, can be compressed into just a single line.\
+    list = [i for i in range(11) if i % 2 == 0]\
+Generator expression: Generator Expressions are somewhat similar to list comprehensions, but the former doesn\'92t construct list object. Instead of creating a list and keeping the whole sequence in the memory, the generator generates the next element in demand.\
+    generator_expression = (i for i in range(11) if i % 2 == 0)\
+Difference: The generator yields one item at a time and generates item only when in demand. Whereas, in a list comprehension, Python reserves memory for the whole list. Thus we can say that the generator expressions are memory efficient than the lists.\
+\
+
+\f0\b \strokec4 #### Does the order of the function definitions matter in Python? Why?
+\f1\b0 \strokec5 \
+The only thing that Python cares about is that the name is defined when it is actually looked up.\
+
+\f0\b \strokec4 #### What does unpacking mean in Python?
+\f1\b0 \strokec5 \
+Unpacking in Python refers to an operation that consists of assigning an iterable of values to a tuple (or list) of variables in a single assignment statement.\
+Python allows a tuple (or list) of variables to appear on the left side of an assignment operation. Each variable in the tuple can receive one value (or more, if we use the * operator) from an iterable on the right side of the assignment.\
+In Python, we can put a tuple of variables on the left side of an assignment operator (=) and a tuple of values on the right side. The values on the right will be automatically assigned to the variables on the left according to their position in the tuple.\
+    a, b, c = (1, 2, 3)\
+The tuple unpacking feature got so popular among Python developers that the syntax was extended to work with any iterable object. The only requirement is that the iterable yields exactly one item per variable in the receiving tuple (or list).  \
+\
+
+\f0\b \strokec4 #### What happens when you try to assign the result of a function which has no return statement to a variable in Python?
+\f1\b0 \strokec5 \
+If there is no return statement in the function code, the function ends, when the control flow reaches the end of the function body and the value None will be returned.\
+\
+\
+\
+
+\f0\b \strokec4 ## Software engineering
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 ### Debugging
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### What techniques can you use while debugging a program in Python?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### What does step over, step into and step out mean while using the debugger?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### How can you start to debug a program from a certain line using the debugger?
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 ### Version control
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### What are the advantages of using a version control system?
+\f1\b0 \strokec5 \
+Using a version control system has various benefits to any team of software developers, including:\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 1.\strokec5  Generate backups\
+Perhaps the most vital benefit of using a version control system is that every time a contributor clones a repository, they are, in a sense creating a backup of the current version of that repository. Having multiple backups on different machines is valuable so we can secure the data from losing in the cause of server failure.\
+\strokec6 2.\strokec5  Test and experiment\
+In today\'92s world, any source code is always under development. New features are always added, a new audience to be targeted, and new applications to be developed.\
+When a team works on a software project, they often have different main project clones to develop new features on, test them, and make sure they function properly before this new feature can be added to the main project. This could save time as different aspects of the code can be developed simultaneously.\
+\strokec6 3.\strokec5  Keep history and track changes\
+Having a record of the changes in a specific code file could help you and new contributors understand how a specific part of the code came to be. How did it start and develop over time to reach its current version.\
+Moreover, if over time, the addition of a certain feature causes difficulties in extending or expanding the project, using version control allows the developers to track that particular feature out and change it or remove it without affecting the project's functionality.\
+\strokec6 4.\strokec5  Collaborate and contribute\
+One of the main benefits of version control systems, especially DVCS, is that it allowed us to contribute to projects we liked despite being in different countries.\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What is the difference between the working directory, the staging area and the repository in git?
+\f1\b0 \strokec5 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 -\strokec5  Working directory: The Working Tree is the area where you are currently working. This area is also known as the \'93untracked\'94 area of git. Any changes to files will be marked and seen in the Working Tree. Here if you make changes and do not explicitly save them to git, you will lose the changes made to your files. This loss of changes occurs because git is not aware of the files or changes in the Working Tree until you tell it to pay attention to them. \
+How can you see what is in your Working Tree? Run the command git status. This command will show you two things: The files in your Working Tree and the files in your Staging Area.\
+\strokec6 -\strokec5  Staging area: The Staging Area is when git starts tracking and saving changes that occur in files. These saved changes reflect in the .git directory. That is about it when it comes to the Staging Area. You tell git that I want to track these specific files, then git says okay and moves them from you Working Tree to the Staging Area and says \'93Cool, I know about this file in its entirety.\'94 However, if you make any more additional changes after adding a file to the Staging Area, git will not know about those specific changes until you tell it to see them.\
+How can you see what is in your Staging Area? Run the command git status like before. \
+How do you add files to your Staging Area? Running the command git add #filename# will add a specific file to the Staging Area from your Working Tree. \
+\strokec6 -\strokec5  Local repository: The Local Repository is everything in your .git directory. Mainly what you will see in your Local Repository are all of your checkpoints or commits. It is the area that saves everything (so don\'92t delete it). \
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What are remote repositories in git?
+\f1\b0 \strokec5 \
+Local repositories reside on the computers of team members. In contrast, remote repositories are hosted on a server that is accessible for all team members - most likely on the internet or on a local network.\
+Technically, a remote repository doesn't differ from a local one: it contains branches, commits, and tags just like a local repository. However, a local repository has a working copy associated with it: a directory where some version of your project's files is checked out for you to work with.\
+A remote repository doesn't have such a working directory: it only consists of the bare ".git" repository folder.\
+\
+
+\f0\b \strokec4 #### Why does a merge conflict occur?
+\f1\b0 \strokec5 \
+Version control systems are all about managing contributions between multiple distributed authors ( usually developers ). Sometimes multiple developers may try to edit the same content. If Developer A tries to edit code that Developer B is editing a conflict may occur. \
+Merging and conflicts are a common part of the Git experience.\
+Most of the time, Git will figure out how to automatically integrate new changes. Conflicts generally arise when two people have changed the same lines in a file, or if one developer deleted a file while another developer was modifying it. In these cases, Git cannot automatically determine what is correct. Conflicts only affect the developer conducting the merge, the rest of the team is unaware of the conflict. Git will mark the file as being conflicted and halt the merging process. It is then the developers' responsibility to resolve the conflict.\
+\
+\
+
+\f0\b \strokec4 #### Through what series of commands could you put a new file into a remote repository connected to your existing local repository?
+\f1\b0 \strokec5 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 -\strokec5  git touch newfile.txt\
+\strokec6 -\strokec5  git add mewfile.txt\
+\strokec6 -\strokec5  git commit -m "Added newfile.txt."\
+\strokec6 -\strokec5  git push\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What does it mean atomic commits and descriptive commit messages?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### What\'92s the difference between git and GitHub?
+\f1\b0 \strokec5 \
+Git: Git is a distributed version control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity, and support for distributed, non-linear workflows.\
+\
+GitHub: GitHub is a web-based Git repository hosting service, which offers all of the distributed revision control and source code management (SCM) functionality of Git as well as adding its own features.\
+    Git                                                 GitHub\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 1.\strokec5   Git is a software.                                  GitHub is a service.\
+\strokec6 2.\strokec5   Git is a command-line tool                          GitHub is a graphical user interface\
+\strokec6 3.\strokec5   Git is installed locally on the system              GitHub is hosted on the web\
+\strokec6 4.\strokec5   Git is maintained by linux.                         GitHub is maintained by microsoft.\
+\strokec6 5.\strokec5   Git is focused on version control and code sharing. GitHub is focused on centralize\
+                                                        source code hosting.\
+\strokec6 6.\strokec5   Git is a version control system to manage source    GitHub is a hosting service for Git\
+    code history.                                       repositories.\
+\strokec6 7.\strokec5   Git was first released in 2005.                     GitHub was launched in 2008.\
+\strokec6 8.\strokec5   Git has no user management feature.                 GitHub has built-in user management feature.\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 ## Software design
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 ### Clean code
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### What does clean code mean?
+\f1\b0 \strokec5 \
+\'95 Runs all the tests;\
+\'95 Contains no duplication;\
+\'95 Expresses all the design ideas that are in the system;\
+\'95 Minimizes the number of entities such as classes, methods, functions, and the like.\
+\'95 Clean code can be read, and enhanced by a developer other than its original author.\
+\
+The main features of clean code:\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 -\strokec5  easier to understand\
+\strokec6 -\strokec5  easier to spot bugs\
+\strokec6 -\strokec5  easier to maintain\
+\strokec6 -\strokec5  easier to test\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What steps do we usually do during a clean code refactoring?
+\f1\b0 \strokec5 \
+Refactoring is a systematic process of improving code without creating new functionality that can transform\
+a mess into clean code and simple design.\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 1.\strokec5  Read through the whole code\
+\strokec6 2.\strokec5  Summarize what is the purpose of the script in one sentence.\
+\strokec6 3.\strokec5  Run the code to see what is the end result\
+\strokec6 4.\strokec5  The code should keep runnable and show the same content when you finish the refactor\
+\strokec6 5.\strokec5  Do not forget to run the code frequently to check you are on the right track\
+\strokec6 6.\strokec5  How to refactor it? \
+    \strokec6 *\strokec5  Remove clutter: Clutter is anything in your code that does not add value\
+        Format your code\
+        Delete comments \
+    \strokec6 *\strokec5  Remove complexity:\
+        bad names\
+        long methods\
+        deep conditionals\
+        improper variable scopes (global, local) \
+    \strokec6 *\strokec5  Remove cleverness: If it\'92s simple and elegant you wouldn\'92t refer to it as \'91clever\'92 \
+    \strokec6 *\strokec5  Remove the 3 D\'92s:\
+        duplication\
+        duplication\
+        duplication\
+        This can be applied by extracting the duplicated code parts into functions\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 ### Error handling
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### What is exception handling?
+\f1\b0 \strokec5 \
+In computing and computer programming, exception handling is the process of responding to the occurrence of exceptions \'96 anomalous or exceptional conditions requiring special processing \'96 during the execution of a program. In general, an exception breaks the normal flow of execution and executes a pre-registered exception handler; the details of how this is done depend on whether it is a hardware or software exception and how the software exception is implemented.\
+\
+(According to the Python documentation:\
+Errors detected during execution are called exceptions and are not unconditionally fatal.\
+Exceptions are raised when the program encounters an error during its execution. They disrupt the normal flow of the program and usually end it abruptly. To avoid this, you can catch them and handle them appropriately.)\
+\
+\
+
+\f0\b \strokec4 #### What are the basics of exception handling in Python?
+\f1\b0 \strokec5 \
+Try and except statements are used to catch and handle exceptions in Python. Statements that can raise exceptions are kept inside the try clause and the statements that handle the exception are written inside except clause. We can thus choose what operations to perform once we have caught the exception.\
+A try clause can have any number of except clauses to handle different exceptions, however, only one will be executed in case an exception occurs. We can use a tuple of values to specify multiple exceptions in an except clause. \
+\
+
+\f0\b \strokec4 #### In which case should we catch an exception? Why?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### What can/should we do with an exception in the \'91except\'92 block?
+\f1\b0 \strokec5 \
+You can use an optional except clause to indicate what to do when certain classes of exception/error occur (e.g. resolve the problem or generate a warning message).\
+\
+
+\f0\b \strokec4 #### What does the else and finally statement do in a try-except block in Python?
+\f1\b0 \strokec5 \
+\'95 else clause. This is an optional clause which will be run if and only if no exception was thrown in the try block. It is useful for code that must be executed if the try clause does not raise an exception.\
+    try:\
+        my_function(6, 2)\
+    except ZeroDivisionError as e: \
+        print(e)\
+    else:\
+        print('Everything worked OK')\
+\'95 finally clause. The optional finally clause runs after the try block exits (whether or not this is due to an exception being raised). You can use it to clean up any resources, close files, etc. It is used for code that you want to run whether an exception occurred or not.\
+    try:\
+        my_function(6, 2)\
+    except ZeroDivisionError as e: \
+        print(e)\
+    else:\
+        print('Everything worked OK')\
+    finally:\
+        print('Always runs')\
+\
+\
+
+\f0\b \strokec4 ## Software Development Methodologies
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### What is the main goal of a retrospective meeting?
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 ## Programming environment
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 ### Unix
+\f1\b0 \strokec5 \
+\
+
+\f0\b \strokec4 #### What is UNIX and what is Linux?
+\f1\b0 \strokec5 \
+What is UNIX?\
+The UNIX OS was born in the late 1960s. AT&T Bell Labs released an operating system called Unix written in C, which allows quicker modification, acceptance, and portability. Unix is a proprietary operating system.\
+The Unix OS works on CLI (Command Line Interface), but recently, there have been developments for GUI on Unix systems. Unix is an OS which is popular in companies, universities big enterprises, etc.\
+What is LINUX?\
+Linux is an operating system built by Linus Torvalds at the University of Helsinki in 1991. The name \'93Linux\'94 comes from the Linux kernel. It is the software on a computer which enables applications and the users to access the devices on the computer to perform some specific function.\
+The Linux OS relays instructions from an application from the computer\'92s processor and sends the results back to the application via the Linux OS. It can be installed on a different type of computers mobile phones, tablets video game consoles, etc.\
+KEY DIFFERENCE\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 -\strokec5  Comparing Unix vs Linux, Linux source code is available to the general public whereas, in Unix, the source code is proprietary.\
+\strokec6 -\strokec5  UNIX OS was created in the late 1960s at AT&T Bell Labs whereas Linux is an operating system built by Linus Torvalds at the University of Helsinki in 1991.\
+\strokec6 -\strokec5  The main difference between Linux and Unix is Linux is a clone of Unix\
+\strokec6 -\strokec5  When we compare Unix to Linux, Linux default shell is BASH while the Unix shell is Bourne Shell.\
+\strokec6 -\strokec5  One key Unix and Linux difference is that Linux threat detection and solution are very fast while Unix users require longer wait times to get the proper bug fixing patch.\
+\strokec6 -\strokec5  Important versions of Linux are Redhat, Ubuntu, OpenSuse, Solaris, whereas important versions of Unix are HP-UX, AIS, BSD, etc.\
+\
+Linux is nothing but a UNIX clone which is written Linus Torvalds from scratch with the help of some hackers across the globe.\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What do we call the shell in Linux?
+\f1\b0 \strokec5 \
+A Shell provides you with an interface to the Unix system. It gathers input from you and executes programs based on that input. When a program finishes executing, it displays that program's output.\
+Shell is an environment in which we can run our commands, programs, and shell scripts. There are different flavors of a shell, just as there are different flavors of operating systems. Each flavor of shell has its own set of recognized commands and functions.\
+\
+
+\f0\b \strokec4 #### What does root means in a Linux environment?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### How do you access your personal files in Linux?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### How can you install an application in Linux?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### What is package management in Linux, what are repositories?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### How do you navigate in the filesystem with the command line?
+\f1\b0 \strokec5 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 -\strokec5  pwd - Print the current working directory.\
+\strokec6 -\strokec5  ls: list all the folders (and/or files) in the current directory\
+\strokec6 -\strokec5  cd: move to another folder (Change Directory)\
+   cd with no directory specified\'97 go back to your Home folder. (You can also type cd ~ to go there.)\
+    cd / - go to the root level of your startup disk\
+    cd .. - go to the directory above the one you\'92re currently in\
+    cd - (hyphen) - go back to the directory you were in before the last time you issued the cd command.\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### What does the following commands do: mkdir, rm, cat, cp, touch?
+\f1\b0 \strokec5 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 -\strokec5  mkdir: Make directory\
+    Syntax: mkdir [\strokec12 OPTION\strokec5 ] directory\
+    Example: Create directory called dir1\
+    $ mkdir dir1\
+\strokec6 -\strokec5  rm: Remove files and directories\
+    Syntax: rm [\strokec12 OPTION\strokec5 ]\'85[\strokec12 FILE\strokec5 ]\
+    Example: Delete file1\
+    $ rm file1\
+\strokec6 -\strokec5  cat: Concatenate files and print to stdout.\
+    Syntax: cat [\strokec12 OPTION\strokec5 ]\'85[\strokec12 FILE\strokec5 ]\
+    Example: Create file1 with entered content\
+    $ cat > file1\
+    Hello\
+    ^D\
+\strokec6 -\strokec5  cp: Copy files\
+    Syntax: cp [\strokec12 OPTION\strokec5 ]source destination\
+    Example: Copies the contents from file1 to file2 and contents of file1 is retained\
+    $ cp file1 file2\
+\strokec6 -\strokec5  touch: Create a new file or update its timestamp.\
+    Syntax: touch [\strokec12 OPTION\strokec5 ]\'85[\strokec12 FILE\strokec5 ]\
+    Example: Create empty files called \'91file1\'92 and \'91file2\'92\
+    $ touch file1 file2\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### How can you look up what does a command do in Linux if you have no internet connection?
+\f1\b0 \strokec5 \
+
+\f0\b \strokec4 #### What does the following commands do: head, tail, more, less?
+\f1\b0 \strokec5 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \strokec6 -\strokec5  head = displays the first ten lines of a file, unless otherwise stated.\
+    Examples:\
+    head myfile.txt \'96 Would display the first ten lines of myfile.txt.\
+    head -15 myfile.txt \'96 Would display the first fifteen lines of myfile.txt.\
+\strokec6 -\strokec5   tail = display the last part of the file\
+    usage : tail filename\
+    tail -n filename : display the last n lines of the file\
+\strokec6 -\strokec5  more = to view a text file one page at a time, press spacebar to go to the next page\
+    more filename : show the document one page at a time\
+    more -num filename : show the document page few lines as specified by (-num)\
+    example : more -10 filename will show 10 lines for every page\
+\strokec6 -\strokec5  less = is much the same as more command except:\
+    a) You can navigate the page up/down using the less command and not possible in more command.\
+    b) You can search a string in less command. (use /keywordto search)\
+    c) \'93more\'94 was fairly limited, and additional development on \'93more\'94 had stopped\
+    d) it uses same functions as vi editor\
+    the usage : less filename\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f0\b \cf2 \strokec4 #### How do you download a file from internet using the terminal?
+\f1\b0 \strokec5 \
+The syntax would be:\
+    curl -O [\strokec12 filenameURL\strokec5 ]\
+\
+The file destination URL should be prefixed with http for the web. By default this will download the requested URL to the present working directory, using the same name for the saved file as that it was on the remote server (in other words, if the file is called \'93filename.zip\'94 on the remote server, the name will stay the same when it downloads.\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \cb1 \
+}
