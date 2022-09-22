@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         'josefin-sans': ['Josefin Sans', 'sans-serif'],
       },
+      maxHeight: {
+        '85%': '85%',
+      }
     },
   },
   plugins: [
