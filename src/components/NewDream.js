@@ -24,8 +24,8 @@ function NewDream({setNewDream}) {
             <textarea className="w-full h-full bg-slate-700 my-4 px-2 py-2 rounded-md" placeholder="What were you dreaming about?"
                       required={true} onChange={(e) => setDreamText(e.target.value)}/>
             <div className="w-full flex justify-between">
-                <button className="text-blue-400 border border-blue-400 px-4 py-2 mb-4 rounded-md" onClick={() => setNewDream(false)}>Cancel</button>
-                <button type="submit" className="bg-blue-600 font-bold px-4 py-2 mb-4 rounded-md">Save</button>
+                <button className="text-blue-400 border border-blue-400 px-4 py-2 mb-4 rounded-full" onClick={() => setNewDream(false)}>Cancel</button>
+                <button type="submit" className="bg-blue-600 font-bold px-4 py-2 mb-4 rounded-full">Save</button>
             </div>
 </form>
     );
