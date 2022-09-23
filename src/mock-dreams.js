@@ -25,3 +25,10 @@ export const addNewDream = (date, title, text) => {
     DREAMS.push({id: maxId + 1, date: date, title: title, text: text})
     maxId = maxId + 1
 }
+
+export const filter = (str) => {
+  return DREAMS.filter(dream => {
+      return dream.title.toLowerCase().includes(str.toLowerCase()) ||
+          dream.text.toLowerCase().includes(str.toLowerCase())
+  })
+}
