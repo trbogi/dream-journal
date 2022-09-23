@@ -1,11 +1,20 @@
-import {DREAMS} from "../mock-dreams";
+import {DREAMS, filter} from "../mock-dreams";
+import Highlighter from "react-highlight-words";
+import {useState} from "react";
+import {useEffect} from "react";
 
-function Diary() {
+function Diary({searchPhrase}) {
+    const [dreams, setDreams] = useState(DREAMS);
+
+    useEffect(() => {
+        const results = filter(searchPhrase);
+        setDreams(results);
+    }, [searchPhrase])
 
     return (
         <div className="max-h-[85%] overflow-auto">
             <ol className="relative border-l border-gray-200 mx-8 dark:border-gray-700">
-                {DREAMS.map((dream) => (
+                {dreams.map((dream) => (
                 <li key={dream.id} className="ml-6 my-8">
                     <span
                         className="flex absolute -left-3 justify-center items-center w-6 h-6 rounded-full ring-8 ring-gray-900 bg-blue-900">
@@ -15,15 +24,27 @@ function Diary() {
                                 clipRule="evenodd"></path>
                         </svg>
                     </span>
-                    <h3 className="mb-1 text-lg font-semibold text-white">{dream.title}</h3>
+                    <h3 className="mb-1 text-lg font-semibold text-white">
+                        <Highlighter
+                            highlightClassName="YourHighlightClass"
+                            searchWords={[searchPhrase]}
+                            autoEscape={true}
+                            textToHighlight={dream.title}
+                        />
+                    </h3>
                     <time
                         className="block mb-2 text-sm font-bold leading-none text-blue-400">{dream.date}
                     </time>
                     <p className="text-justify font-normal text-gray-400">
-                        {dream.text}
+                        <Highlighter
+                            highlightClassName="YourHighlightClass"
+                            searchWords={[searchPhrase]}
+                            autoEscape={true}
+                            textToHighlight={dream.text}
+                        />
                     </p>
-                </li>
-                    ))}
+                </li>))
+                }
             </ol>
         </div>
     );
