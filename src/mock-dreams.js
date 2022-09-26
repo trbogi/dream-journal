@@ -32,3 +32,7 @@ export const filter = (str) => {
           dream.text.toLowerCase().includes(str.toLowerCase())
   })
 }
+
+export const sortByDate = (dreams) => {
+    return dreams.sort((a,b)=> new Date(b.date) - new Date(a.date));
+}

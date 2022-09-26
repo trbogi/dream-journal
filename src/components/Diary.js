@@ -1,10 +1,10 @@
-import {DREAMS, filter} from "../mock-dreams";
+import {DREAMS, filter, sortByDate} from "../mock-dreams";
 import Highlighter from "react-highlight-words";
 import {useState} from "react";
 import {useEffect} from "react";
 
 function Diary({searchPhrase}) {
-    const [dreams, setDreams] = useState(DREAMS);
+    const [dreams, setDreams] = useState(sortByDate(DREAMS));
 
     useEffect(() => {
         const results = filter(searchPhrase);
@@ -16,25 +16,27 @@ function Diary({searchPhrase}) {
             <ol className="relative border-l border-gray-200 mx-8 dark:border-gray-700">
                 {dreams.map((dream) => (
                 <li key={dream.id} className="ml-6 my-8">
-                    <span
-                        className="flex absolute -left-3 justify-center items-center w-6 h-6 rounded-full ring-8 ring-gray-900 bg-blue-900">
+                    <div className="flex justify-between items-center">
+                                            <span
+                                                className="flex absolute -left-3 justify-center items-center w-6 h-6 rounded-full ring-8 ring-gray-900 bg-blue-900">
                         <svg aria-hidden="true" className="w-3 h-3 text-blue-400" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                clipRule="evenodd"></path>
+                                  clipRule="evenodd"></path>
                         </svg>
                     </span>
-                    <h3 className="mb-1 text-lg font-semibold text-white">
-                        <Highlighter
-                            highlightClassName="YourHighlightClass"
-                            searchWords={[searchPhrase]}
-                            autoEscape={true}
-                            textToHighlight={dream.title}
-                        />
-                    </h3>
-                    <time
-                        className="block mb-2 text-sm font-bold leading-none text-blue-400">{dream.date}
-                    </time>
+                        <h3 className="mb-1 text-lg font-semibold text-white">
+                            <Highlighter
+                                highlightClassName="YourHighlightClass"
+                                searchWords={[searchPhrase]}
+                                autoEscape={true}
+                                textToHighlight={dream.title}
+                            />
+                        </h3>
+                        <time
+                            className="block mb-2 text-sm font-bold leading-none text-blue-400">{dream.date}
+                        </time>
+                    </div>
                     <p className="text-justify font-normal text-gray-400">
                         <Highlighter
                             highlightClassName="YourHighlightClass"
