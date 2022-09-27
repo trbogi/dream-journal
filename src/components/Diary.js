@@ -34,10 +34,16 @@ function Diary({searchPhrase}) {
                             />
                         </h3>
                         <time
-                            className="block mb-2 text-sm font-bold leading-none text-blue-400">{dream.date}
+                            className="block mb-2 text-ml font-bold leading-none text-blue-400">{dream.date}
                         </time>
                     </div>
-                    <p className="text-justify font-normal text-gray-400">
+                    {dream.emotions &&
+                    <div className="flex w-full flex-wrap mb-4">
+                        {dream.emotions.map((emotion) => {
+                            return <span className="bg-blue-300 text-slate-900 text-xs px-2 py-1 mr-2 my-1 rounded-full">{emotion.label}</span>})}
+                    </div>
+                    }
+                    <p className="text-justify font-normal text-slate-400">
                         <Highlighter
                             highlightClassName="YourHighlightClass"
                             searchWords={[searchPhrase]}
