@@ -21,8 +21,8 @@ export const DREAMS = [
             "Duis gravida ipsum nunc, sit amet sagittis est laoreet nec. Nunc nec nulla urna. Praesent pharetra lorem vel ante gravida, a congue magna placerat. Pellentesque tristique, magna et tincidunt fermentum, dolor dui luctus velit, sed imperdiet tellus enim id lorem. Sed vulputate mollis neque eget auctor. Nullam in viverra purus, euismod ornare lacus. Suspendisse non sapien tellus. Ut condimentum faucibus iaculis. Mauris lobortis tristique fringilla. Duis lacinia viverra nulla, a sodales nibh bibendum vel. Donec in lorem bibendum nulla vestibulum consectetur. Nullam placerat pulvinar massa, quis luctus arcu condimentum molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras maximus, nunc non mollis molestie, tellus odio lobortis purus, at fermentum arcu mi quis eros. Aliquam suscipit dolor nunc, nec molestie tellus convallis et."}
 ]
 
-export const addNewDream = (date, title, text) => {
-    DREAMS.push({id: maxId + 1, date: date, title: title, text: text})
+export const addNewDream = (date, title, emotions, text) => {
+    DREAMS.push({id: maxId + 1, date: date, title: title, emotions: emotions, text: text})
     maxId = maxId + 1
 }
 
