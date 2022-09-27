@@ -17,7 +17,7 @@ function App() {
             Dream Diary
         </header>
         {!newDream &&
-            <div className="max-w-5xl max-h-full min-w-full sm:min-w-[64rem]">
+            <div className="max-w-5xl max-h-full min-w-full md:min-w-[768px]">
                 <div className="flex justify-between">
                     <button className="bg-blue-600 font-bold px-2 py-2 mx-2 my-2 rounded-full" onClick={() => setNewDream(true)}>Add new
                         dream</button>
