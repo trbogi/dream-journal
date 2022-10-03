@@ -1,4 +1,5 @@
-let maxId = 4
+import moment from 'moment';
+let maxId = 6
 
 export const DREAMS = [
     {id: 1,
@@ -18,7 +19,16 @@ export const DREAMS = [
         title: "The craziest dream in my life",
         text: "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec blandit massa vitae velit convallis, interdum commodo erat gravida. Vivamus quis lacus non metus ultrices consectetur. Sed lorem tellus, volutpat in tempor vel, commodo et quam. Sed ut ligula sollicitudin, pretium metus et, porta urna. Donec sodales placerat eros in laoreet. Pellentesque augue erat, tincidunt eu pharetra quis, semper at ex. Cras sed ullamcorper leo, vehicula convallis turpis. Morbi imperdiet augue nunc, a ultricies lacus sagittis a. In ultrices tristique nibh in feugiat.\n" +
             "\n" +
-            "Duis gravida ipsum nunc, sit amet sagittis est laoreet nec. Nunc nec nulla urna. Praesent pharetra lorem vel ante gravida, a congue magna placerat. Pellentesque tristique, magna et tincidunt fermentum, dolor dui luctus velit, sed imperdiet tellus enim id lorem. Sed vulputate mollis neque eget auctor. Nullam in viverra purus, euismod ornare lacus. Suspendisse non sapien tellus. Ut condimentum faucibus iaculis. Mauris lobortis tristique fringilla. Duis lacinia viverra nulla, a sodales nibh bibendum vel. Donec in lorem bibendum nulla vestibulum consectetur. Nullam placerat pulvinar massa, quis luctus arcu condimentum molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras maximus, nunc non mollis molestie, tellus odio lobortis purus, at fermentum arcu mi quis eros. Aliquam suscipit dolor nunc, nec molestie tellus convallis et."}
+            "Duis gravida ipsum nunc, sit amet sagittis est laoreet nec. Nunc nec nulla urna. Praesent pharetra lorem vel ante gravida, a congue magna placerat. Pellentesque tristique, magna et tincidunt fermentum, dolor dui luctus velit, sed imperdiet tellus enim id lorem. Sed vulputate mollis neque eget auctor. Nullam in viverra purus, euismod ornare lacus. Suspendisse non sapien tellus. Ut condimentum faucibus iaculis. Mauris lobortis tristique fringilla. Duis lacinia viverra nulla, a sodales nibh bibendum vel. Donec in lorem bibendum nulla vestibulum consectetur. Nullam placerat pulvinar massa, quis luctus arcu condimentum molestie. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras maximus, nunc non mollis molestie, tellus odio lobortis purus, at fermentum arcu mi quis eros. Aliquam suscipit dolor nunc, nec molestie tellus convallis et."},
+    {id: 5,
+        date: "2021-07-19",
+        title: "Unsuccessful interview",
+        text: "Donec sit amet tortor in elit porttitor auctor id sed diam. Nunc ipsum mi, tempor eget efficitur in, tristique eget lectus. Nullam commodo nisl porttitor, mattis libero vitae, sollicitudin mauris. In eu commodo massa. Curabitur ultrices eros et aliquet luctus. Nam egestas facilisis tellus, mattis rutrum lectus euismod at. Vivamus convallis pulvinar odio, consequat varius sem viverra vel. Cras tincidunt finibus nunc sed malesuada. Donec quis accumsan metus, vitae aliquet dolor. In luctus ornare enim, non vulputate nulla ultrices a. Proin imperdiet, enim ut consectetur tristique, nisi augue gravida quam, et condimentum ante lacus id dui. Donec blandit et urna vitae ultrices. Nulla at fermentum leo, sit amet pellentesque arcu."},
+    {id: 6,
+        date: "2021-08-19",
+        title: "Newborn puppies",
+        text: "Donec sit amet tortor in elit porttitor auctor id sed diam. Nunc ipsum mi, tempor eget efficitur in, tristique eget lectus. Nullam commodo nisl porttitor, mattis libero vitae, sollicitudin mauris. In eu commodo massa. Curabitur ultrices eros et aliquet luctus. Nam egestas facilisis tellus, mattis rutrum lectus euismod at. Vivamus convallis pulvinar odio, consequat varius sem viverra vel. Cras tincidunt finibus nunc sed malesuada. Donec quis accumsan metus, vitae aliquet dolor. In luctus ornare enim, non vulputate nulla ultrices a. Proin imperdiet, enim ut consectetur tristique, nisi augue gravida quam, et condimentum ante lacus id dui. Donec blandit et urna vitae ultrices. Nulla at fermentum leo, sit amet pellentesque arcu."},
+
 ]
 
 export const addNewDream = (date, title, emotions, text) => {
@@ -35,4 +45,18 @@ export const filter = (str) => {
 
 export const sortByDate = (dreams) => {
     return dreams.sort((a,b)=> new Date(b.date) - new Date(a.date));
+}
+
+export const groupByYearAndMonth = (dreams) => {
+    const groupedMap = dreams.reduce(
+        (entryMap, e) => entryMap.set(getYearAndMonth(e.date), [...entryMap.get(getYearAndMonth(e.date))||[], e]),
+        new Map()
+    )
+    let arrayOfDreamByPeriod = []
+    groupedMap.forEach((value, key) => {arrayOfDreamByPeriod.push({period: key, dreams: value})})
+    return arrayOfDreamByPeriod
+}
+
+function getYearAndMonth(stringDate) {
+    return moment(stringDate).format('YYYY. MMMM')
 }
