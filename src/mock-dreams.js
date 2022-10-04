@@ -36,7 +36,7 @@ export const addNewDream = (date, title, emotions, text) => {
     maxId = maxId + 1
 }
 
-export const filter = (str) => {
+export const filterBySearchPhrase = (str) => {
   return DREAMS.filter(dream => {
       return dream.title.toLowerCase().includes(str.toLowerCase()) ||
           dream.text.toLowerCase().includes(str.toLowerCase())
@@ -59,4 +59,9 @@ export const groupByYearAndMonth = (dreams) => {
 
 function getYearAndMonth(stringDate) {
     return moment(stringDate).format('YYYY. MMMM')
+}
+
+export const filterByTime= (from, to, dreams) =>{
+    dreams.map((dream) => {console.log(moment(from).isBefore(moment(dream.date)) && moment(to).isAfter(moment(dream.date)))})
+    return dreams.filter(dream => moment(from).isBefore(moment(dream.date)) && moment(to).isAfter(moment(dream.date)))
 }

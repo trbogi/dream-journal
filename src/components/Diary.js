@@ -1,19 +1,24 @@
-import {DREAMS, filter, sortByDate, groupByYearAndMonth} from "../mock-dreams";
+import {DREAMS, filterBySearchPhrase, sortByDate, groupByYearAndMonth, filterByTime} from "../mock-dreams";
 import Highlighter from "react-highlight-words";
 import {useState} from "react";
 import {useEffect} from "react";
 
-function Diary({searchPhrase}) {
+function Diary({searchPhrase, fromDate, toDate}) {
     const [dreams, setDreams] = useState(sortByDate(DREAMS));
 
     useEffect(() => {
-        const results = filter(searchPhrase);
-        setDreams(results);
-    }, [searchPhrase])
+        let result = []
 
-    console.log(groupByYearAndMonth(dreams))
+            result = filterBySearchPhrase(searchPhrase)
+            setDreams(result);
+            if (fromDate.length && toDate.length){
+                result = filterByTime(fromDate, toDate, result)
+                setDreams(result);
+            }
+    }, [searchPhrase, fromDate, toDate])
+
     return (
-        <div className="max-h-[85%] overflow-auto">
+        <div className="max-h-[80%] md:max-h-[70%] overflow-auto lg:max-h-[90%]">
             {groupByYearAndMonth(dreams).map((group) => (
                 <>
                     <h1 className="ml-4 text-xl font-extrabold italic">{group.period}</h1>
