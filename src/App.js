@@ -2,6 +2,7 @@ import {useState} from "react";
 import Diary from "../src/components/Diary"
 import NewDream from "./components/NewDream"
 import {IoSearch} from "react-icons/io5"
+import FilterByTime from "./components/FilterByTime";
 
 function App() {
     const [newDream, setNewDream] = useState(false);
@@ -26,14 +27,7 @@ function App() {
                             <input className="bg-slate-300 px-2 focus:outline-none" type="search" onChange={search}/>
                         </div>
                     </div>
-                    <div className="flex text-sm lg:flex-col w-full">
-                        <label>From:</label>
-                        <input type="date" lang="en" value={fromDate} onChange={(e) => setFromDate(e.target.value)}
-                               className="bg-slate-300 max-w-fit my-4 mx-2 px-2 py-2 text-slate-900 border border-slate-700 sm:text-sm rounded-full focus:outline-none focus:border-blue-500"/>
-                        <label>To:</label>
-                        <input type="date" lang="en" value={toDate} onChange={(e) => setToDate(e.target.value)} max={new Date().toISOString()}
-                               className="bg-slate-300 max-w-fit my-4 mx-2 px-2 py-2 text-slate-900 border border-slate-700 sm:text-sm rounded-full focus:outline-none focus:border-blue-500"/>
-                    </div>
+                    <FilterByTime from={fromDate} to={toDate} setFrom={setFromDate} setTo={setToDate}/>
                 </div>
                 <Diary searchPhrase={searchPhrase} fromDate={fromDate} toDate={toDate}/>
             </div>
