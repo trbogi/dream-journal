@@ -6,11 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'josefin-sans': ['Josefin Sans', 'sans-serif'],
+        'quicksand': ['Quicksand', 'sans-serif']
       },
-      maxHeight: {
-        '85%': '85%',
-      }
     },
   },
   plugins: [
