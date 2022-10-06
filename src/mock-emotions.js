@@ -29,3 +29,5 @@ export const EMOTIONS = [
 ]
 
 export const suggestions = EMOTIONS.map((name, index) => ({ value: index, label: name }))
+
+export const sortAlphabetically = (emotions) => emotions.sort((a, b) => a.label.localeCompare(b.label))
