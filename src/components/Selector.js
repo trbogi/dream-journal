@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {suggestions as allEmotions, sortAlphabetically} from "../mock-emotions";
 
 
-function Selector() {
+function Selector({tags, setTags}) {
     const [suggestions, setSuggestions] = useState(allEmotions)
     const [isOpen, setIsOpen] = useState(false)
     const [selectedValues, setSelectedValues] = useState([])
@@ -21,7 +21,8 @@ function Selector() {
 
     const deleteEmotion = (e, emotion) => {
         e.stopPropagation();
-        if (selectedValues.some(selected => selected.value === emotion.value)){setSelectedValues(selectedValues.filter((selected) => selected.value !== emotion.value))
+        if (selectedValues.some(selected => selected.value === emotion.value)){
+            setSelectedValues(selectedValues.filter((selected) => selected.value !== emotion.value))
             setNotSelectedValues(sortAlphabetically([...notSelectedValues, emotion]))
         }
     }
@@ -33,10 +34,11 @@ function Selector() {
 
     useEffect(() => {
         setSuggestions(notSelectedValues.filter((emotion) => emotion.label.includes(searchPhrase)))
+        setTags(selectedValues)
     }, [searchPhrase, notSelectedValues])
 
     return (
-        <div tabIndex={0} className="relative w-full flex border rounded-lg bg-slate-300 text-xs text-slate-900 px-1 py-1 min-h-max"
+        <div tabIndex={0} className="relative w-full my-2 flex border rounded-lg bg-slate-300 text-xs text-slate-900 px-1 py-1 min-h-max"
              onBlur={() => setIsOpen(false)}
              onClick={() => setIsOpen(prev => !prev)}
         >
@@ -48,7 +50,10 @@ function Selector() {
                     </span>))}
                 <input className="bg-slate-300 focus:outline-0" placeholder="Search emotions..." onChange={(e) =>searchEmotion(e)} value={inputValue} type="text"/>
             </span>
-            <button className="text-slate-600 text-sm hover:text-blue-500" onClick={() => setSelectedValues([])}>&times;</button>
+            <button className="text-slate-600 text-sm hover:text-blue-500" onClick={() => {
+                setSelectedValues([])
+                setNotSelectedValues(allEmotions)
+            }}>&times;</button>
             <ul className={`absolute w-full top-full left-0 max-h-40 overflow-y-auto bg-slate-300 z-[1000] mt-1 rounded-lg py-1 ${isOpen? "block": "hidden"} `}>
                 {!suggestions.length && <li>No matches found</li>}
                 {suggestions.map((option) =>
