@@ -1,5 +1,5 @@
 import moment from 'moment';
-let maxId = 6
+let maxId = 7
 
 export const DREAMS = [
     {id: 1,
@@ -28,7 +28,11 @@ export const DREAMS = [
         date: "2021-08-19",
         title: "Newborn puppies",
         text: "Donec sit amet tortor in elit porttitor auctor id sed diam. Nunc ipsum mi, tempor eget efficitur in, tristique eget lectus. Nullam commodo nisl porttitor, mattis libero vitae, sollicitudin mauris. In eu commodo massa. Curabitur ultrices eros et aliquet luctus. Nam egestas facilisis tellus, mattis rutrum lectus euismod at. Vivamus convallis pulvinar odio, consequat varius sem viverra vel. Cras tincidunt finibus nunc sed malesuada. Donec quis accumsan metus, vitae aliquet dolor. In luctus ornare enim, non vulputate nulla ultrices a. Proin imperdiet, enim ut consectetur tristique, nisi augue gravida quam, et condimentum ante lacus id dui. Donec blandit et urna vitae ultrices. Nulla at fermentum leo, sit amet pellentesque arcu."},
-
+    {id: 7,
+        date: "2022-10-17",
+        title: "Training",
+        text: "Donec sit amet tortor in elit porttitor auctor id sed diam. Nunc ipsum mi, tempor eget efficitur in, tristique eget lectus. Nullam commodo nisl porttitor, mattis libero vitae, sollicitudin mauris. In eu commodo massa. Curabitur ultrices eros et aliquet luctus. Nam egestas facilisis tellus, mattis rutrum lectus euismod at. Vivamus convallis pulvinar odio, consequat varius sem viverra vel. Cras tincidunt finibus nunc sed malesuada. Donec quis accumsan metus, vitae aliquet dolor. In luctus ornare enim, non vulputate nulla ultrices a. Proin imperdiet, enim ut consectetur tristique, nisi augue gravida quam, et condimentum ante lacus id dui. Donec blandit et urna vitae ultrices. Nulla at fermentum leo, sit amet pellentesque arcu.",
+        emotions: [{value:1, label: "adoration"}]},
 ]
 
 export const addNewDream = (date, title, emotions, text) => {
@@ -62,6 +66,28 @@ function getYearAndMonth(stringDate) {
 }
 
 export const filterByTime= (from, to, dreams) =>{
-    dreams.map((dream) => {console.log(moment(from).isBefore(moment(dream.date)) && moment(to).isAfter(moment(dream.date)))})
     return dreams.filter(dream => moment(from).isBefore(moment(dream.date)) && moment(to).isAfter(moment(dream.date)))
+}
+
+export const filterByEmotions= (tags, dreams) =>{
+    if (!tags.length){
+        return dreams
+    }
+    return dreams.filter(dream => hasTags(dream, tags))
+}
+
+const hasTags = (dream, tags) => {
+    if (!dream.emotions){
+        return false
+    }
+    const dreamEmotionValues = dream.emotions.map(emotion => emotion.value)
+    const tagValues = tags.map(emotion => emotion.value) || []
+
+   for (const tagValue of tagValues) {
+        if (!dreamEmotionValues.includes(tagValue)){
+            return false
+        }
+    }
+
+    return true
 }
