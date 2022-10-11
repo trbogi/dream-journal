@@ -1,28 +1,32 @@
-import {DREAMS, filterBySearchPhrase, sortByDate, groupByYearAndMonth, filterByTime} from "../mock-dreams";
+import {DREAMS, filterBySearchPhrase, sortByDate, groupByYearAndMonth, filterByTime, filterByEmotions} from "../mock-dreams";
 import Highlighter from "react-highlight-words";
 import {useState} from "react";
 import {useEffect} from "react";
 
-function Diary({searchPhrase, fromDate, toDate}) {
+function Diary({searchPhrase, fromDate, toDate, tags}) {
     const [dreams, setDreams] = useState(sortByDate(DREAMS));
 
     useEffect(() => {
+        setDreams(sortByDate(DREAMS))
         let result = []
-
             result = filterBySearchPhrase(searchPhrase)
             setDreams(result);
-            if (fromDate.length && toDate.length){
-                result = filterByTime(fromDate, toDate, result)
-                setDreams(result);
-            }
-    }, [searchPhrase, fromDate, toDate])
+        if (fromDate.length && toDate.length){
+            result = filterByTime(fromDate, toDate, result)
+            setDreams(result);
+        }
+        if (tags.length){
+            result = filterByEmotions(tags, dreams)
+            setDreams(result)
+        }
+    }, [searchPhrase, fromDate, toDate, tags])
 
     return (
-        <div className="max-h-[80%] md:max-h-[70%] overflow-auto lg:max-h-[90%]">
+        <div className="max-h-[80%] md:max-h-[70%] overflow-auto lg:min-h-[90%] lg:max-h-[90%]">
             {groupByYearAndMonth(dreams).map((group) => (
-                <>
+                <div key={group.period}>
                     <h1 className="ml-4 text-xl font-extrabold italic">{group.period}</h1>
-                    <ol className="relative border-l border-gray-200 mx-6 dark:border-gray-700">
+                    <ol className="relative border-l mx-6 border-gray-700">
                         {group.dreams.map((dream) => (
                         <li key={dream.id} className="ml-6 my-8">
                             <div className="flex justify-between items-center">
@@ -63,7 +67,7 @@ function Diary({searchPhrase, fromDate, toDate}) {
                         </li>))
                         }
                     </ol>
-                </>))
+                </div>))
             }
         </div>
     );

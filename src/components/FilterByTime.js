@@ -6,8 +6,8 @@ function FilterByTime({from, to, setFrom, setTo}) {
     const chevron = isOpen ? <BiChevronUp className="inline text-2xl"/> : <BiChevronDown className="inline text-2xl"/>
 
     return (
-        <div className="px-4 py-2 lg:px-2">
-        <button onClick={() => setIsOpen(!isOpen)} className="w-full lg:w-full flex justify-between items-center">
+        <div className="py-2">
+        <button onClick={() => setIsOpen(!isOpen)} className="w-full border-b border-gray-700 py-1 lg:w-full flex justify-between items-center">
             By time
             {chevron}
         </button>
