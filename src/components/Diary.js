@@ -2,6 +2,7 @@ import {DREAMS, filterBySearchPhrase, sortByDate, groupByYearAndMonth, filterByT
 import Highlighter from "react-highlight-words";
 import {useState} from "react";
 import {useEffect} from "react";
+import NoDreams from "./NoDreams";
 
 function Diary({searchPhrase, fromDate, toDate, tags}) {
     const [dreams, setDreams] = useState(sortByDate(DREAMS));
@@ -22,7 +23,8 @@ function Diary({searchPhrase, fromDate, toDate, tags}) {
     }, [searchPhrase, fromDate, toDate, tags])
 
     return (
-        <div className="max-h-[80%] md:max-h-[70%] overflow-auto lg:min-h-[90%] lg:max-h-[90%]">
+        <div className="w-full max-h-[80%] md:max-h-[70%] overflow-auto lg:min-h-[90%] lg:max-h-[90%]">
+            {!dreams.length && <NoDreams/>}
             {groupByYearAndMonth(dreams).map((group) => (
                 <div key={group.period}>
                     <h1 className="ml-4 text-xl font-extrabold italic">{group.period}</h1>
