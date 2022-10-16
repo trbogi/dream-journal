@@ -20,15 +20,16 @@ function App() {
     }
 
   return (
-    <div className="flex flex-col items-center w-full h-screen font-quicksand text-slate-50 bg-slate-900 overflow-hidden">
+    <div className="flex flex-col items-center w-full h-screen font-quicksand text-slate-50 bg-slate-900 overflow-auto overflow-auto">
         {!newDream &&
-            <div className="max-w-5xl max-h-full min-w-full lg:min-w-[1024px] lg:flex lg:mt-10">
-                <div className="flex justify-between mb-4 px-4 flex-col lg:justify-start">
-                    <div className="flex justify-between  w-full lg:flex-col">
+            <div className="max-w-5xl max-h-full min-w-full  lg:flex lg:justify-center lg:max-w-[1024px] lg:mt-10">
+                {/*Menu*/}
+                <div className="flex justify-between mb-4 px-4 flex-col lg:justify-start lg:max-w-[240px]">
+                    <div className="flex justify-between w-full lg:flex-col">
                         <button className="text-sm bg-blue-600 font-bold px-2 py-2 my-2 rounded-full lg:mb-16" onClick={() => setNewDream(true)}>
                             <span className="hidden sm:block">Add new dream</span> <BsPencilSquare className="w-5 h-5 my-1 mx-1 sm:hidden"/></button>
                         <div className="flex items-center gap-1">
-                            <div className="flex items-center bg-slate-300 text-slate-900 rounded-full px-4 py-1 my-2">
+                            <div className="flex items-center w-full bg-slate-300 text-slate-900 rounded-full px-4 py-1 my-2">
                                 <IoSearch/>
                                 <input className="bg-slate-300 px-2 focus:outline-none" type="search" onChange={search}/>
                             </div>
