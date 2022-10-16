@@ -13,7 +13,7 @@ function FilterByEmotions({tags, setTags}) {
                 {chevron}
             </button>
             <div className={`${isOpen ? "": "hidden"} flex w-full text-sm justify-between md:justify-start md:gap-x-4 lg:flex-col lg:w-full`}>
-                <Selector tags={tags} setTags={setTags}/>
+                <Selector mainStyle={'bg-slate-300'} tags={tags} setTags={setTags}/>
             </div>
         </div>
     )
