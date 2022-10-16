@@ -24,17 +24,17 @@ function App() {
         {!newDream &&
             <div className="max-w-5xl max-h-full min-w-full  lg:flex lg:justify-center lg:max-w-[1024px] lg:mt-10">
                 {/*Menu*/}
-                <div className="flex justify-between mb-4 px-4 flex-col lg:justify-start lg:max-w-[240px]">
+                <div className="flex justify-between mb-4 px-4 flex-col lg:justify-start lg:max-w-[260px]">
                     <div className="flex justify-between w-full lg:flex-col">
                         <button className="text-sm bg-blue-600 font-bold px-2 py-2 my-2 rounded-full lg:mb-16" onClick={() => setNewDream(true)}>
                             <span className="hidden sm:block">Add new dream</span> <BsPencilSquare className="w-5 h-5 my-1 mx-1 sm:hidden"/></button>
                         <div className="flex items-center gap-1">
-                            <div className="flex items-center w-full bg-slate-300 text-slate-900 rounded-full px-4 py-1 my-2">
+                            <div className="flex items-center w-full  bg-slate-300 text-slate-900 rounded-full px-4 py-1 my-2">
                                 <IoSearch/>
                                 <input className="bg-slate-300 px-2 focus:outline-none" type="search" onChange={search}/>
                             </div>
-                            <button className={`w-8 h-8 flex justify-center items-center rounded-full bg-slate-300 text-slate-900 my-2 hover:text-blue-700 ${showFilters? "bg-slate-400": ""} lg:hidden`}
-                                    onClick={() => setShowFilters(!showFilters)}><FiFilter/></button>
+                            <button className={`flex justify-center items-center rounded-full bg-slate-300 text-slate-900 px-2 py-2 hover:text-blue-700 ${showFilters? "bg-slate-400": ""} lg:hidden`}
+                                    onClick={() => setShowFilters(!showFilters)}><FiFilter className="w-5 h-5"/></button>
                         </div>
                      </div>
                         <div className={`${showFilters? "": "hidden"} lg:block`}>

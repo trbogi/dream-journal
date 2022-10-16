@@ -21,7 +21,7 @@ function DreamItem({dream, searchPhrase}) {
                     />
                 </h3>
                 <time
-                    className="block mb-2 text-ml font-bold leading-none text-blue-400">{dream.date}
+                    className="block mb-2 text-ml font-bold leading-none text-blue-400">{new Date(dream.date).toDateString()}
                 </time>
             </div>
             {dream.emotions &&
