@@ -2,7 +2,7 @@ import Highlighter from "react-highlight-words";
 
 function DreamItem({dream, searchPhrase}) {
     return (
-        <li key={dream.id} className="ml-6 my-8">
+        <li className="ml-6 my-8">
             <div className="flex justify-between items-center">
                                                     <span
                                                         className="flex absolute -left-3 justify-center items-center w-6 h-6 rounded-full ring-8 ring-gray-900 bg-blue-900">

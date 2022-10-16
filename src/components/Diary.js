@@ -30,7 +30,7 @@ function Diary({searchPhrase, fromDate, toDate, tags}) {
                     <h1 className="ml-4 text-xl font-extrabold italic">{group.period}</h1>
                     <ol className="relative border-l mx-6 border-gray-700">
                         {group.dreams.map((dream) => (
-                            <DreamItem dream={dream} searchPhrase={searchPhrase}/>
+                            <DreamItem key={dream.id} dream={dream} searchPhrase={searchPhrase}/>
                         ))
                         }
                     </ol>
