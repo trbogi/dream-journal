@@ -20,11 +20,8 @@ app.get('/getDreams', (req, res) => {
 
 app.get('/getEmotions', (req, res) => {
     EmotionModel.find({}, (err, result) => {
-        if (err){
-            res.json(err)
-        }else{
-            res.json(result)
-        }
+        if (err) res.json(err)
+        res.json(result)
     })
 })
 
@@ -39,6 +36,15 @@ app.delete('/delete/:id', (req, res) => {
     if (!req.params.id) res.status(404).json({'message': 'Id required.'})
     DreamModel.deleteOne({ _id : req.params.id }, (err, result) => {
         if (err) res.status(500).json({'message': 'Deletion was not successful'})
+        res.json(result)
+    })
+})
+
+app.put('/edit/:id', (req, res) => {
+    if (!req.params.id) res.status(404).json({'message': 'Id required.'})
+    DreamModel.updateOne({ _id : req.params.id }, req.body, (err, result) => {
+        if (err) res.status(500).json({'message': 'Edit was not successful'})
+        res.json(result)
     })
 })
 
