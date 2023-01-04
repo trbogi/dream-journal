@@ -35,6 +35,13 @@ app.post('/newDream', async (req, res) => {
     res.json(req.body)
 })
 
+app.delete('/delete/:id', (req, res) => {
+    if (!req.params.id) res.status(404).json({'message': 'Id required.'})
+    DreamModel.deleteOne({ _id : req.params.id }, (err, result) => {
+        if (err) res.status(500).json({'message': 'Deletion was not successful'})
+    })
+})
+
 app.listen(3001, () => {
     console.log('Server runs on port 3001')
 })
