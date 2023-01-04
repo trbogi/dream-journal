@@ -6,6 +6,8 @@ const { EmotionModel }= require('./models/Emotion')
 
 mongoose.connect('mongodb+srv://trbogi:Pass8trbogi@cluster0.z5f1okn.mongodb.net/dream-journal?retryWrites=true&w=majority')
 
+app.use(express.json())
+
 app.get('/getDreams', (req, res) => {
     DreamModel.find({}, (err, result) => {
         if (err){
@@ -24,6 +26,13 @@ app.get('/getEmotions', (req, res) => {
             res.json(result)
         }
     })
+})
+
+app.post('/newDream', async (req, res) => {
+    const newDream = new DreamModel(req.body)
+    await newDream.save()
+
+    res.json(req.body)
 })
 
 app.listen(3001, () => {
