@@ -1,12 +1,20 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const cors = require('cors')
 const DreamModel = require('./models/Dream')
 const { EmotionModel }= require('./models/Emotion')
 
 mongoose.connect('mongodb+srv://trbogi:Pass8trbogi@cluster0.z5f1okn.mongodb.net/dream-journal?retryWrites=true&w=majority')
 
 app.use(express.json())
+
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+  }
+
+app.use(cors(corsOptions))
 
 app.get('/getDreams', (req, res) => {
     DreamModel.find({}, (err, result) => {
