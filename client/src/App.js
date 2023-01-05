@@ -1,5 +1,5 @@
 import {useState} from "react";
-import Diary from "../src/components/Diary"
+import Diary from "./components/Diary"
 import NewDream from "./components/NewDream"
 import {IoSearch} from "react-icons/io5"
 import {FiFilter} from 'react-icons/fi'

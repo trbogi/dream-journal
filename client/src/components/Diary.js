@@ -7,8 +7,19 @@ import DreamItem from "./DreamItem";
 function Diary({searchPhrase, fromDate, toDate, tags}) {
     const [dreams, setDreams] = useState(sortByDate(DREAMS));
 
+    const fetchDreams = async () => {
+        const response = await fetch('http://localhost:3001/getDreams')
+        const data = await response.json()
+
+        if (response.ok){
+            setDreams(sortByDate(data))
+        }
+
+    }
+
     useEffect(() => {
-        setDreams(sortByDate(DREAMS))
+        fetchDreams() 
+        //setDreams(sortByDate(DREAMS))
         let result = []
             result = filterBySearchPhrase(searchPhrase)
             setDreams(result);
