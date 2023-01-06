@@ -1,17 +1,31 @@
 import {useState} from "react";
-import {addNewDream} from "../mock-dreams";
 import Selector from './Selector'
 
 function NewDream({setNewDream}) {
     const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
     const [title, setTitle] = useState("");
     const [emotions, setEmotions] = useState([]);
-    const [dreamText, setDreamText] = useState("");
+    const [text, setText] = useState("");
 
+    const addNewDream = async () => {
+        const response = await fetch('http://localhost:3001/newDream', {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body : JSON.stringify({
+                date,
+                title,
+                text,
+                emotions
+            })
+        })
+        return response.json()
+    }
 
     const add = (e) => {
         e.preventDefault()
-        addNewDream(date, title, emotions, dreamText)
+        addNewDream()
         setNewDream(false)
     }
 
@@ -27,7 +41,7 @@ function NewDream({setNewDream}) {
             </div>
             <Selector mainStyle={"bg-slate-700 text-slate-50 text-sm focus:border focus:border-blue-500"} tagStyle={"bg-blue-200"} tag={emotions} setTags={setEmotions}/>
             <textarea className="w-full h-full bg-slate-700 border border-slate-700 my-4 px-2 py-2 rounded-2xl focus:outline-none focus:border-blue-500 text-sm" placeholder="What were you dreaming about?"
-                      required={true} onChange={(e) => setDreamText(e.target.value)}/>
+                      required={true} onChange={(e) => setText(e.target.value)}/>
             <div className="w-full flex justify-between">
                 <button className="text-blue-400 text-sm border border-blue-400 px-4 py-2 mb-4 rounded-full" onClick={() => setNewDream(false)}>Cancel</button>
                 <button type="submit" className="bg-blue-600 font-bold text-sm px-4 py-2 mb-4 rounded-full">Save</button>
