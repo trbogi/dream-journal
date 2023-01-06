@@ -19,9 +19,13 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 app.get('/getDreams', (req, res) => {
-    const dreams = DreamModel.find()
-    if (!dreams) return res.status(204).json({'message': 'No dreams found.'})
-    res.json(dreams)
+    DreamModel.find({}, (err, result) => {
+        if (err){
+            res.status(500).json(err)
+        }else{
+            res.json(result)
+        }
+    })
 })
 
 app.get('/getEmotions', (req, res) => {
