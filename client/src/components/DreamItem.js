@@ -27,7 +27,7 @@ function DreamItem({dream, searchPhrase}) {
             {dream.emotions &&
                 <div className="flex w-full flex-wrap mb-4">
                     {dream.emotions.map((emotion) => {
-                        return <span className="bg-blue-200 text-slate-900 text-xs px-2 py-1 mr-2 my-1 rounded-full">{emotion.label}</span>})}
+                        return <span key={emotion._id} className="bg-blue-200 text-slate-900 text-xs px-2 py-1 mr-2 my-1 rounded-full">{emotion.label}</span>})}
                 </div>
             }
             <p className="text-justify font-normal text-slate-400">
