@@ -1,4 +1,5 @@
 import Highlighter from "react-highlight-words";
+import { FiEdit } from "react-icons/fi"
 
 function DreamItem({dream, searchPhrase}) {
     return (
@@ -14,15 +15,17 @@ function DreamItem({dream, searchPhrase}) {
                             </span>
                 <h3 className="mb-1 text-lg font-semibold text-white">
                     <Highlighter
-                        highlightClassName="YourHighlightClass"
                         searchWords={[searchPhrase]}
                         autoEscape={true}
                         textToHighlight={dream.title}
                     />
                 </h3>
-                <time
-                    className="block mb-2 text-ml font-bold leading-none text-blue-400">{new Date(dream.date).toDateString()}
-                </time>
+                <div className="flex justify-between">
+                    <time
+                        className="block mb-2 text-ml font-bold leading-none text-blue-400">{new Date(dream.date).toDateString()}
+                    </time>
+                    <button className="px-2 mb-2"><FiEdit/></button>
+                </div>
             </div>
             {dream.emotions &&
                 <div className="flex w-full flex-wrap mb-4">
