@@ -43,8 +43,8 @@ export const addNewDream = (date, title, emotions, text) => {
     maxId = maxId + 1
 }
 
-export const filterBySearchPhrase = (str) => {
-  return DREAMS.filter(dream => {
+export const filterBySearchPhrase = (dreams, str) => {
+  return dreams.filter(dream => {
       return dream.title.toLowerCase().includes(str.toLowerCase()) ||
           dream.text.toLowerCase().includes(str.toLowerCase())
   })
