@@ -12,6 +12,10 @@ export const dreamsReducer = (state, action) => {
       return { 
         dreams: [action.payload, ...state.dreams] 
       }
+    case 'DELETE_DREAM':
+        return {
+            dreams: state.dreams.filter((dream) => dream._id !== action.payload._id )
+        }
     default:
       return state
   }

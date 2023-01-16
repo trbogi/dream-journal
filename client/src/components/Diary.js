@@ -33,9 +33,8 @@ function Diary({searchPhrase, fromDate, toDate, tags}) {
         if (tags.length){
             result = filterByEmotions(tags, result)
         }
-        console.log(result)
         setCurrentDreams(result)
-    }, [searchPhrase, fromDate, toDate, tags])
+    }, [dreams, searchPhrase, fromDate, toDate, tags])
 
     return (
         <div className="w-full overflow-auto lg:w-[896px]">

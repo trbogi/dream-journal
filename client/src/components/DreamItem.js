@@ -1,7 +1,22 @@
+import { useDreamsContext } from "../hooks/useDreamsContext";
 import Highlighter from "react-highlight-words";
-import { FiEdit } from "react-icons/fi"
+import { FiEdit, FiTrash2 } from "react-icons/fi"
 
 function DreamItem({dream, searchPhrase}) {
+    const { dispatch } = useDreamsContext()
+
+    const deleteDream = async () => {
+        const response = await fetch(`http://localhost:3001/api/dreams/${dream._id}`, {
+            method: 'DELETE'
+        })
+        const data = await response.json()
+
+        if (response.ok) {
+            dispatch({type: 'DELETE_DREAM', payload: data})
+        }
+
+    }
+
     return (
         <li className="ml-6 my-8">
             <div className="flex justify-between items-center">
@@ -24,7 +39,10 @@ function DreamItem({dream, searchPhrase}) {
                     <time
                         className="block mb-2 text-ml font-bold leading-none text-blue-400">{new Date(dream.date).toDateString()}
                     </time>
-                    <button className="px-2 mb-2"><FiEdit/></button>
+                    
+                        <button className="px-1 mb-2" onClick={deleteDream}><FiTrash2/></button>
+                        <button className="pl-1 mb-2"><FiEdit/></button>
+                    
                 </div>
             </div>
             {dream.emotions &&
