@@ -21,7 +21,7 @@ app.use(cors(corsOptions))
 
 app.use('/api/dreams', dreamsRoutes)
 
-app.use('api/emotions', emotionsRoutes)
+app.use('/api/emotions', emotionsRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log('Server runs on port' + process.env.PORT)
