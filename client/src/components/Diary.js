@@ -3,28 +3,29 @@ import {useState} from "react";
 import {useEffect} from "react";
 import NoDreams from "./NoDreams";
 import DreamItem from "./DreamItem";
+import { useDreamsContext } from "../hooks/useDreamsContext";
 
 function Diary({searchPhrase, fromDate, toDate, tags}) {
-    const [allDreams, setAllDreams] = useState([]);
-    const [dreams, setDreams] = useState([]);
+    const [currentDreams, setCurrentDreams] = useState([]);
+    const {dreams, dispatch} = useDreamsContext()
 
     const fetchDreams = async () => {
-        const response = await fetch('http://localhost:3001/getDreams')
+        const response = await fetch('http://localhost:3001/api/dreams')
+        const data = await response.json()
 
         if (response.ok){
-            const data = await response.json()
-            setDreams(sortByDate(data))
-            setAllDreams(sortByDate(data))
+            dispatch({type: 'SET_DREAMS', payload: data})
+
+            setCurrentDreams(sortByDate(data))
         }
     }
 
-    useEffect(() => fetchDreams, [])
+    useEffect(() => fetchDreams, [dispatch])
 
     useEffect(() => {
         let result = []
 
-        result = filterBySearchPhrase(allDreams, searchPhrase)
-        console.log(result)
+        result = filterBySearchPhrase(dreams, searchPhrase)
         
         if (fromDate.length && toDate.length){
             result = filterByTime(fromDate, toDate, result)
@@ -33,13 +34,13 @@ function Diary({searchPhrase, fromDate, toDate, tags}) {
             result = filterByEmotions(tags, result)
         }
         console.log(result)
-        setDreams(result)
+        setCurrentDreams(result)
     }, [searchPhrase, fromDate, toDate, tags])
 
     return (
         <div className="w-full overflow-auto lg:w-[896px]">
-            {!dreams.length && <NoDreams/>}
-            {groupByYearAndMonth(dreams).map((group) => (
+            {!currentDreams.length && <NoDreams/>}
+            {groupByYearAndMonth(currentDreams).map((group) => (
                 <div key={group.period}>
                     <h1 className="ml-4 text-xl font-extrabold italic">{group.period}</h1>
                     <ol className="relative border-l mx-6 border-gray-700">
