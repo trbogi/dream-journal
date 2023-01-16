@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -6,7 +7,7 @@ const bodyParser = require("body-parser")
 const DreamModel = require('./models/Dream')
 const { EmotionModel }= require('./models/Emotion')
 
-mongoose.connect('mongodb+srv://trbogi:Pass8trbogi@cluster0.z5f1okn.mongodb.net/dream-journal?retryWrites=true&w=majority')
+mongoose.connect(process.env.DB)
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
@@ -81,6 +82,6 @@ app.put('/edit/:id', async (req, res) => {
     res.json(result);
 })
 
-app.listen(3001, () => {
-    console.log('Server runs on port 3001')
+app.listen(process.env.PORT, () => {
+    console.log('Server runs on port' + process.env.PORT)
 })
