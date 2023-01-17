@@ -8,7 +8,7 @@ function NewDream({setNewDream}) {
     const [text, setText] = useState("");
 
     const addNewDream = async () => {
-        const response = await fetch('http://localhost:3001/newDream', {
+        const response = await fetch('http://localhost:3001/api/dreams', {
             method : 'POST',
             headers: {
                 'Content-Type': 'application/json'
