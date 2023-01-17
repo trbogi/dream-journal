@@ -1,36 +1,48 @@
 import {useEffect, useState} from "react";
-import {suggestions as allEmotions, sortAlphabetically} from "../mock-emotions";
+import {sortAlphabetically} from "../mock-emotions";
 
 
-function Selector({mainStyle, tagStyle, tags, setTags}) {
-    const [suggestions, setSuggestions] = useState(allEmotions)
+function Selector({mainStyle, tagStyle, setTags, selectedTags}) {
+    const [suggestions, setSuggestions] = useState([])
     const [isOpen, setIsOpen] = useState(false)
     const [selectedValues, setSelectedValues] = useState([])
-    const [notSelectedValues, setNotSelectedValues] = useState(allEmotions)
+    const [notSelectedValues, setNotSelectedValues] = useState([])
     const [searchPhrase, setSearchPhrase] = useState("")
     const [inputValue, setInputValue] = useState("")
 
     const addEmotion = (e, emotion) => {
-        if (!selectedValues.some(selected => selected.value === emotion.value)){
+        console.log(selectedValues)
+        if (!selectedValues.some(selected => selected._id === emotion._id)){
             setSelectedValues([...selectedValues, emotion])
-            setNotSelectedValues(sortAlphabetically(notSelectedValues.filter(notSelected => notSelected.value !== emotion.value)))
+            setNotSelectedValues(sortAlphabetically(notSelectedValues.filter(notSelected => notSelected._id !== emotion._id)))
             setSearchPhrase("")
             setInputValue("")
         }
+
     }
 
     const deleteEmotion = (e, emotion) => {
         e.stopPropagation();
-        if (selectedValues.some(selected => selected.value === emotion.value)){
-            setSelectedValues(selectedValues.filter((selected) => selected.value !== emotion.value))
+        if (selectedValues.some(selected => selected._id === emotion._id)){
+            setSelectedValues(selectedValues.filter((selected) => selected._id !== emotion._id))
             setNotSelectedValues(sortAlphabetically([...notSelectedValues, emotion]))
         }
     }
 
     const searchEmotion = (e) => {
-        setInputValue(e.target.value)
-        setSearchPhrase(e.target.value)
+        setInputValue(e.target._id)
+        setSearchPhrase(e.target._id)
     }
+
+    useEffect(() => {
+        const fetchEmotions = async () => {
+            const response = await fetch('http://localhost:3001/api/emotions')
+            const data = await response.json()
+            setSuggestions(data)
+            setNotSelectedValues(data)
+        }
+        fetchEmotions()
+    }, [])
 
     useEffect(() => {
         setSuggestions(notSelectedValues.filter((emotion) => emotion.label.includes(searchPhrase)))
@@ -52,12 +64,12 @@ function Selector({mainStyle, tagStyle, tags, setTags}) {
             </span>
             <button className="text-slate-600 text-sm hover:text-blue-500" onClick={() => {
                 setSelectedValues([])
-                setNotSelectedValues(allEmotions)
+                setNotSelectedValues(suggestions)
             }}>&times;</button>
             <ul className={`absolute w-full top-full left-0 max-h-40 overflow-y-auto ${mainStyle} border border-white shadow-lg z-[1000] mt-1 rounded-lg py-1 ${isOpen? "block": "hidden"} `}>
                 {!suggestions.length && <li>No matches found</li>}
                 {suggestions.map((option) =>
-                    (<li key={option.value} className="rounded-lg px-2 hover:bg-slate-400 hover:cursor-pointer"
+                    (<li key={option._id} className="rounded-lg px-2 hover:bg-slate-400 hover:cursor-pointer"
                         onMouseDown={(e) => addEmotion(e, option)}
                         >
                         {option.label}
