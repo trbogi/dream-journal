@@ -1,7 +1,7 @@
 import {useState} from "react";
 import Selector from './Selector'
 
-function NewDream({setNewDream}) {
+function NewDream() {
     const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
     const [title, setTitle] = useState("");
     const [emotions, setEmotions] = useState([]);
@@ -26,7 +26,6 @@ function NewDream({setNewDream}) {
     const add = (e) => {
         e.preventDefault()
         addNewDream()
-        setNewDream(false)
     }
 
     return (
@@ -43,7 +42,7 @@ function NewDream({setNewDream}) {
             <textarea className="w-full h-full bg-slate-700 border border-slate-700 my-4 px-2 py-2 rounded-2xl focus:outline-none focus:border-blue-500 text-sm" placeholder="What were you dreaming about?"
                       required={true} onChange={(e) => setText(e.target.value)}/>
             <div className="w-full flex justify-between">
-                <button className="text-blue-400 text-sm border border-blue-400 px-4 py-2 mb-4 rounded-full" onClick={() => setNewDream(false)}>Cancel</button>
+                <button className="text-blue-400 text-sm border border-blue-400 px-4 py-2 mb-4 rounded-full" >Cancel</button>
                 <button type="submit" className="bg-blue-600 font-bold text-sm px-4 py-2 mb-4 rounded-full">Save</button>
             </div>
     </form>
