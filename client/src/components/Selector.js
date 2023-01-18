@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {sortAlphabetically} from "../mock-emotions";
 
 
-function Selector({mainStyle, tagStyle, setTags, selectedTags}) {
+function Selector({mainStyle, tagStyle, setTags, tags}) {
     const [suggestions, setSuggestions] = useState([])
     const [isOpen, setIsOpen] = useState(false)
     const [selectedValues, setSelectedValues] = useState([])
@@ -10,8 +10,26 @@ function Selector({mainStyle, tagStyle, setTags, selectedTags}) {
     const [searchPhrase, setSearchPhrase] = useState("")
     const [inputValue, setInputValue] = useState("")
 
-    const addEmotion = (e, emotion) => {
-        console.log(selectedValues)
+    const fetchEmotions = async () => {
+        const response = await fetch('http://localhost:3001/api/emotions')
+        const data = await response.json()
+
+        if (tags){
+            let notSelected= data
+            for (const tag of tags) {
+                notSelected = notSelected.filter((em) => em._id !== tag._id)
+            }
+
+            setSelectedValues([...tags])
+            setSuggestions(notSelected) 
+            setNotSelectedValues(notSelected)
+        }else{
+            setSuggestions(data) 
+            setNotSelectedValues(data)
+        }
+    }
+
+    const addEmotion = (emotion) => {
         if (!selectedValues.some(selected => selected._id === emotion._id)){
             setSelectedValues([...selectedValues, emotion])
             setNotSelectedValues(sortAlphabetically(notSelectedValues.filter(notSelected => notSelected._id !== emotion._id)))
@@ -35,14 +53,9 @@ function Selector({mainStyle, tagStyle, setTags, selectedTags}) {
     }
 
     useEffect(() => {
-        const fetchEmotions = async () => {
-            const response = await fetch('http://localhost:3001/api/emotions')
-            const data = await response.json()
-            setSuggestions(data)
-            setNotSelectedValues(data)
-        }
         fetchEmotions()
     }, [])
+
 
     useEffect(() => {
         setSuggestions(notSelectedValues.filter((emotion) => emotion.label.includes(searchPhrase)))
@@ -70,7 +83,7 @@ function Selector({mainStyle, tagStyle, setTags, selectedTags}) {
                 {!suggestions.length && <li>No matches found</li>}
                 {suggestions.map((option) =>
                     (<li key={option._id} className="rounded-lg px-2 hover:bg-slate-400 hover:cursor-pointer"
-                        onMouseDown={(e) => addEmotion(e, option)}
+                        onMouseDown={() => addEmotion(option)}
                         >
                         {option.label}
                     </li>))}

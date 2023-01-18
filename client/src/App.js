@@ -9,6 +9,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/new' element={<NewDream/>}/>
+                    <Route path='/edit/:id' element={<NewDream/>}/>
                 </Routes>
              </BrowserRouter>
         </div>

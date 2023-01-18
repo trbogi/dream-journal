@@ -1,6 +1,7 @@
-import { useDreamsContext } from "../hooks/useDreamsContext";
-import Highlighter from "react-highlight-words";
+import { useDreamsContext } from "../hooks/useDreamsContext"
+import Highlighter from "react-highlight-words"
 import { FiEdit, FiTrash2 } from "react-icons/fi"
+import { Link } from "react-router-dom"
 
 function DreamItem({dream, searchPhrase}) {
     const { dispatch } = useDreamsContext()
@@ -14,7 +15,6 @@ function DreamItem({dream, searchPhrase}) {
         if (response.ok) {
             dispatch({type: 'DELETE_DREAM', payload: data})
         }
-
     }
 
     return (
@@ -41,7 +41,7 @@ function DreamItem({dream, searchPhrase}) {
                     </time>
                     
                         <button className="px-1 mb-2" onClick={deleteDream}><FiTrash2/></button>
-                        <button className="pl-1 mb-2"><FiEdit/></button>
+                        <Link to={`/edit/${dream._id}`}><button className="pl-1 mb-2"><FiEdit/></button></Link>
                     
                 </div>
             </div>
