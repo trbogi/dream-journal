@@ -84,7 +84,10 @@ function DreamItem({dream, searchPhrase}) {
                 </div>
               </div>
               <div className="px-4 py-3 sm:flex sm:justify-between sm:flex-row-reverse sm:px-6">
-                <button type="button" className="inline-flex w-full justify-center rounded-full border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm">Delete</button>
+                <button type="button" className="inline-flex w-full justify-center rounded-full border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 sm:ml-3 sm:w-auto sm:text-sm"
+                  onClick={deleteDream}>
+                  Delete
+                </button>
                 <button type="button" className="mt-3 inline-flex w-full justify-center rounded-full border border-blue-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50  sm:mt-0 sm:w-auto sm:text-sm"
                 onClick={() => setShowModal(false)}>Cancel</button>
               </div>
