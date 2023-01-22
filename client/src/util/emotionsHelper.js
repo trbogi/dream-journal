@@ -1,0 +1,1 @@
+export const sortAlphabetically = (emotions) => emotions.sort((a, b) => a.label.localeCompare(b.label))

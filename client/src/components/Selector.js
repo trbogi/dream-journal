@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {sortAlphabetically} from "../mock-emotions";
+import { useEffect, useState } from "react";
+import { sortAlphabetically } from "../util/emotionsHelper";
 
 
 function Selector({mainStyle, tagStyle, setTags, tags}) {
@@ -40,7 +40,8 @@ function Selector({mainStyle, tagStyle, setTags, tags}) {
     }
 
     const deleteEmotion = (e, emotion) => {
-        e.stopPropagation();
+        e.preventDefault()
+        e.stopPropagation()
         if (selectedValues.some(selected => selected._id === emotion._id)){
             setSelectedValues(selectedValues.filter((selected) => selected._id !== emotion._id))
             setNotSelectedValues(sortAlphabetically([...notSelectedValues, emotion]))

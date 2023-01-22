@@ -1,6 +1,6 @@
-import {filterBySearchPhrase, sortByDate, groupByYearAndMonth, filterByTime, filterByEmotions} from "../mock-dreams";
-import {useState} from "react";
-import {useEffect} from "react";
+import { filterBySearchPhrase, sortByDate, groupByYearAndMonth, filterByTime, filterByEmotions } from "../util/dreamsHelper";
+import { useState } from "react";
+import { useEffect } from "react";
 import NoDreams from "./NoDreams";
 import DreamItem from "./DreamItem";
 import LoadingSpinner from "./LoadingSpinner";
