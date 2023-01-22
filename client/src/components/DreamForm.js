@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import Selector from './Selector'
 
-function NewDream() {
+function DreamForm() {
     const {id} = useParams()
     const navigate = useNavigate()
     const [dream , setDream] = useState(null)
@@ -102,4 +102,4 @@ function NewDream() {
     )
 }
 
-export default NewDream
+export default DreamForm

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import NewDream from './components/NewDream'
+import DreamForm from './components/DreamForm'
 
 function App() {
   return (
@@ -8,8 +8,8 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='/new' element={<NewDream/>}/>
-                    <Route path='/edit/:id' element={<NewDream/>}/>
+                    <Route path='/new' element={<DreamForm/>}/>
+                    <Route path='/edit/:id' element={<DreamForm/>}/>
                 </Routes>
              </BrowserRouter>
         </div>
