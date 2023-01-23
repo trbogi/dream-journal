@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [The challenge](#the-challenge)
+- [The project](#the-project)
 - [Screenshot](#screenshot)
 - [Links](#links)
 - [Built with](#built-with)
@@ -12,7 +12,15 @@
 
 ## The project
 
-This is a small frontend project where you can collect your dreams (with additional emotion tags). You can search by text, filter by time and by tags. It was designed to show the optimal layout for each page depending on the screen size
+This is a MERN stack project where you can collect your dreams (with additional emotion tags). You can search by text, filter by time and by tags. It was designed to show the optimal layout for each page depending on the screen size.
+
+Features:
+- Add dream
+- Edit dream
+- Delete dream
+- Search by text
+- Filter by time
+- Filter by emotions
 
 ## Screenshot
 
@@ -31,16 +39,19 @@ Mobile:
 ## Links
 
 - GitHub repo: [https://github.com/trbogi/dream-journal](https://github.com/trbogi/dream-journal)
-- Live Site URL: [https://dream-journal.onrender.com](https://dream-journal.onrender.com)
+- Live Site URL: [https://dream-journal-trbogi.netlify.app/](https://dream-journal-trbogi.netlify.app/)
 
 ## Built with
 
-- [React](https://reactjs.org/) - JS library
-- [Tailwind CSS](https://tailwindcss.com/) - For styles
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Node JS](https://nodejs.org/)
+- [Express JS](https://expressjs.com/)
+- [MongoDB](https://mongodb.com/)
 
 ## Continued development
 
-In the future I would like to make this project into a full-stack application using the MERN stack.
+In the future I would like to implement authentication to make the app a more useful.
 
 ## Author
 
