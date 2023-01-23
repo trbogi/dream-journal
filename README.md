@@ -31,7 +31,7 @@ Mobile:
 ## Links
 
 - GitHub repo: [https://github.com/trbogi/dream-journal](https://github.com/trbogi/dream-journal)
-- Live Site URL: [https://trbogi.github.io/dream-journal](https://trbogi.github.io/dream-journal)
+- Live Site URL: [https://dream-journal.onrender.com](https://dream-journal.onrender.com)
 
 ## Built with
 
