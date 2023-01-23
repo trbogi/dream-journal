@@ -86,10 +86,10 @@ function DreamForm() {
                        style={{"colorScheme": "dark"}}/>
             </div>
             {dream && 
-                <Selector mainStyle={"bg-slate-700 text-slate-50 text-sm focus:border focus:border-blue-500"} tagStyle={"bg-blue-200"} setTags={setEmotions} tags={emotions}/>
+                <Selector mainStyle={"bg-slate-700 text-slate-50 text-sm focus:border focus:border-blue-500"} tagStyle={"bg-blue-200"} setEmotions={() => setEmotions} emotions={emotions}/>
             }
             {!id && 
-                <Selector mainStyle={"bg-slate-700 text-slate-50 text-sm focus:border focus:border-blue-500"} tagStyle={"bg-blue-200"} setTags={setEmotions} />
+                <Selector mainStyle={"bg-slate-700 text-slate-50 text-sm focus:border focus:border-blue-500"} tagStyle={"bg-blue-200"} setEmotions={() => setEmotions} />
         }
             <textarea className="w-full h-full bg-slate-700 border border-slate-700 my-4 px-2 py-2 rounded-2xl focus:outline-none focus:border-blue-500 text-sm" placeholder="What were you dreaming about?"
                       required={true} onChange={(e) => setText(e.target.value)}

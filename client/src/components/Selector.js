@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { sortAlphabetically } from "../util/emotionsHelper";
 
-function Selector({mainStyle, tagStyle, setTags, tags}) {
+function Selector({mainStyle, tagStyle, setEmotions, emotions}) {
     const [suggestions, setSuggestions] = useState([])
     const [isOpen, setIsOpen] = useState(false)
     const [selectedValues, setSelectedValues] = useState([])
@@ -13,13 +13,13 @@ function Selector({mainStyle, tagStyle, setTags, tags}) {
         const response = await fetch('https://dream-journal-api.onrender.com/api/emotions')
         const data = await response.json()
 
-        if (tags){
+        if (emotions){
             let notSelected= data
-            for (const tag of tags) {
-                notSelected = notSelected.filter((em) => em._id !== tag._id)
+            for (const emotion of emotions) {
+                notSelected = notSelected.filter((em) => em._id !== emotion._id)
             }
 
-            setSelectedValues([...tags])
+            setSelectedValues([...emotions])
             setSuggestions(notSelected) 
             setNotSelectedValues(notSelected)
         }else{
@@ -59,7 +59,7 @@ function Selector({mainStyle, tagStyle, setTags, tags}) {
 
     useEffect(() => {
         setSuggestions(notSelectedValues.filter((emotion) => emotion.label.includes(searchPhrase)))
-        setTags(selectedValues)
+        setEmotions(selectedValues)
     }, [searchPhrase, notSelectedValues])
 
     return (
