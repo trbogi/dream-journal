@@ -14,9 +14,8 @@ function Diary({searchPhrase, fromDate, toDate, tags}) {
     const fetchDreams = async () => {
         setLoadingDreams(true)
         const response = await fetch('https://dream-journal-api.onrender.com/api/dreams')
-        console.log(response)
         const data = await response.json()
-        console.log(response)
+
 
         if (response.ok){
             dispatch({type: 'SET_DREAMS', payload: data})
