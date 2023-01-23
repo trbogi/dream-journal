@@ -5,6 +5,7 @@ import NoDreams from "./NoDreams";
 import DreamItem from "./DreamItem";
 import LoadingSpinner from "./LoadingSpinner";
 import { useDreamsContext } from "../hooks/useDreamsContext";
+const { API_URL } = process.env
 
 function Diary({searchPhrase, fromDate, toDate, tags}) {
     const [currentDreams, setCurrentDreams] = useState(null);
@@ -13,7 +14,7 @@ function Diary({searchPhrase, fromDate, toDate, tags}) {
 
     const fetchDreams = async () => {
         setLoadingDreams(true)
-        const response = await fetch('http://localhost:3001/api/dreams')
+        const response = await fetch(API_URL + '/api/dreams')
         const data = await response.json()
 
         if (response.ok){

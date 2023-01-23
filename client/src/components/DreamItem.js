@@ -4,13 +4,14 @@ import { FiEdit, FiTrash2 } from "react-icons/fi"
 import { AiOutlineExclamationCircle } from "react-icons/ai"
 import { Link } from "react-router-dom"
 import { useState } from "react"
+const { API_URL } = process.env
 
 function DreamItem({dream, searchPhrase}) {
     const { dispatch } = useDreamsContext()
     const [showModal, setShowModal] = useState(false)
 
     const deleteDream = async () => {
-        const response = await fetch(`http://localhost:3001/api/dreams/${dream._id}`, {
+        const response = await fetch(`${API_URL}/api/dreams/${dream._id}`, {
             method: 'DELETE'
         })
         const data = await response.json()

@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import Selector from './Selector'
+import Selector from './Selector';
+const { API_URL } = process.env;
 
 function DreamForm() {
     const {id} = useParams()
@@ -14,7 +15,7 @@ function DreamForm() {
     useEffect(() => {
         const fetchDream = async () => {
             if (id) {
-            const response = await fetch(`http://localhost:3001/api/dreams/${id}`)
+            const response = await fetch(API_URL + `/api/dreams/${id}`)
             const dream = await response.json()
             setDream(date)
             setTitle(dream.title)
@@ -27,7 +28,7 @@ function DreamForm() {
 
     const add = async(e) => {
         e.preventDefault()
-        const response = await fetch('http://localhost:3001/api/dreams', {
+        const response = await fetch('https://dream-journal-api.onrender.com/api/dreams', {
             method : 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +47,7 @@ function DreamForm() {
 
     const update = async (e) => {
         e.preventDefault()
-        const response = await fetch(`http://localhost:3001/api/dreams/${id}`, {
+        const response = await fetch(`https://dream-journal-api.onrender.com/api/dreams/${id}`, {
             method : 'PUT',
             headers: {
                 'Content-Type': 'application/json'
