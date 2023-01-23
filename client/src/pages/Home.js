@@ -40,7 +40,7 @@ function Home() {
             </div>
                 <div className={`${showFilters? "": "hidden"} lg:block`}>
                     <FilterByTime from={fromDate} to={toDate} setFrom={setFromDate} setTo={setToDate}/>
-                    <FilterByEmotions tags={tags} setTags={setTags}/>
+                    <FilterByEmotions emotions={tags} setEmotions={setTags}/>
                 </div>
         </div>
         <Diary searchPhrase={searchPhrase} fromDate={fromDate} toDate={toDate} tags={tags}/>

@@ -2,7 +2,7 @@ import {useState} from "react";
 import {BiChevronDown, BiChevronUp} from "react-icons/bi"
 import Selector from "./Selector";
 
-function FilterByEmotions({tags, setTags}) {
+function FilterByEmotions({emotions, setEmotions}) {
     const [isOpen, setIsOpen] = useState(false)
     const chevron = isOpen ? <BiChevronUp className="inline text-2xl"/> : <BiChevronDown className="inline text-2xl"/>
 
@@ -13,7 +13,7 @@ function FilterByEmotions({tags, setTags}) {
                 {chevron}
             </button>
             <div className={`${isOpen ? "": "hidden"} flex w-full text-sm justify-between md:justify-start md:gap-x-4 lg:flex-col lg:w-full`}>
-                <Selector mainStyle={'bg-slate-300'} tags={tags} setTags={setTags}/>
+                <Selector mainStyle={'bg-slate-300'} emotions={emotions} setEmotions={setEmotions}/>
             </div>
         </div>
     )
