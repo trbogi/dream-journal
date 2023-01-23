@@ -11,21 +11,22 @@ function Diary({searchPhrase, fromDate, toDate, tags}) {
     const {dreams, dispatch} = useDreamsContext()
     const [loadingDreams, setLoadingDreams] = useState(false)
 
-    const fetchDreams = async () => {
-        setLoadingDreams(true)
-        const response = await fetch('https://dream-journal-api.onrender.com/api/dreams')
-        const data = await response.json()
-
-
-        if (response.ok){
-            dispatch({type: 'SET_DREAMS', payload: data})
+    useEffect(() => {
+        const fetchDreams = async () => {
+            setLoadingDreams(true)
+            const response = await fetch('https://dream-journal-api.onrender.com/api/dreams')
+            const data = await response.json()
+    
+    
+            if (response.ok){
+                dispatch({type: 'SET_DREAMS', payload: data})
+                setLoadingDreams(false)
+                setCurrentDreams(sortByDate(data))
+            }
             setLoadingDreams(false)
-            setCurrentDreams(sortByDate(data))
         }
-        setLoadingDreams(false)
-    }
-
-    useEffect(() => fetchDreams(), [dispatch])
+        fetchDreams()
+    }, [dispatch])
 
     useEffect(() => {
         let result = []
