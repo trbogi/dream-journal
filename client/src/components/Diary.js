@@ -26,7 +26,7 @@ function Diary({searchPhrase, fromDate, toDate, tags}) {
         setLoadingDreams(false)
     }
 
-    useEffect(() => fetchDreams, [dispatch])
+    useEffect(() => fetchDreams(), [dispatch])
 
     useEffect(() => {
         let result = []
