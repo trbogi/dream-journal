@@ -24,7 +24,7 @@ function Home() {
         {/*Menu*/}
         <div className="flex justify-between mb-4 px-4 flex-col lg:justify-start lg:max-w-[260px]">
             <div className="flex justify-between w-full lg:flex-col">
-                <Link to='dream-journal/new'>
+                <Link to='/new'>
                     <div className="flex justify-center text-sm bg-blue-600 font-bold px-2 py-2 my-2 rounded-full lg:mb-16" >
                         <span className="hidden sm:block">Add new dream</span> <BsPencilSquare className="w-5 h-5 my-1 mx-1 sm:hidden"/>
                     </div>
