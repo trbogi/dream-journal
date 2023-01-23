@@ -45,7 +45,7 @@ function DreamItem({dream, searchPhrase}) {
                     </time>
                     
                         <button className="px-1 mb-2" onClick={() => setShowModal(true)}><FiTrash2/></button>
-                        <Link to={`/edit/${dream._id}`}><button className="pl-1 mb-2"><FiEdit/></button></Link>
+                        <Link to={`dream-journal/edit/${dream._id}`}><button className="pl-1 mb-2"><FiEdit/></button></Link>
                     
                 </div>
             </div>
