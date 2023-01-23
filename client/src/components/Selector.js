@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { sortAlphabetically } from "../util/emotionsHelper";
-const { API_URL } = process.env;
+const { REACT_APP_API_URL } = process.env;
 
 
 function Selector({mainStyle, tagStyle, setTags, tags}) {
@@ -12,7 +12,7 @@ function Selector({mainStyle, tagStyle, setTags, tags}) {
     const [inputValue, setInputValue] = useState("")
 
     const fetchEmotions = async () => {
-        const response = await fetch(API_URL + '/api/emotions')
+        const response = await fetch(REACT_APP_API_URL + '/api/emotions')
         const data = await response.json()
 
         if (tags){

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import Selector from './Selector';
-const { API_URL } = process.env;
+const { REACT_APP_API_URL } = process.env;
 
 function DreamForm() {
     const {id} = useParams()
@@ -13,9 +13,10 @@ function DreamForm() {
     const [text, setText] = useState("");
 
     useEffect(() => {
+        console.log(REACT_APP_API_URL)
         const fetchDream = async () => {
             if (id) {
-            const response = await fetch(API_URL + `/api/dreams/${id}`)
+            const response = await fetch(REACT_APP_API_URL + `/api/dreams/${id}`)
             const dream = await response.json()
             setDream(date)
             setTitle(dream.title)
