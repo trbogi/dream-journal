@@ -12,8 +12,9 @@ function DreamForm() {
     const [text, setText] = useState("");
 
     useEffect(() => {
+        if (id) {
         const fetchDream = async () => {
-            if (id) {
+    
             const response = await fetch(`https://dream-journal-api.onrender.com/api/dreams/${id}`)
             const dream = await response.json()
             setDream(date)
@@ -21,8 +22,9 @@ function DreamForm() {
             setDate(dream.date.slice(0, 10))
             setEmotions(dream.emotions)
             setText(dream.text)
-        }}
+        }
         fetchDream()
+    }
     }, [])
 
     const add = async(e) => {
