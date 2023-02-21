@@ -48,8 +48,8 @@ function Selector({mainStyle, tagStyle, setEmotions, emotions}) {
     }
 
     const searchEmotion = (e) => {
-        setInputValue(e.target._id)
-        setSearchPhrase(e.target._id)
+        setInputValue(e.target.value)
+        setSearchPhrase(e.target.value)
     }
 
     useEffect(() => {
@@ -73,7 +73,7 @@ function Selector({mainStyle, tagStyle, setEmotions, emotions}) {
                         {option.label}
                         <button className="ml-1 text-slate-600 hover:text-blue-500" onClick={(e) => deleteEmotion(e,option)}>&times;</button>
                     </span>))}
-                <input className={`${mainStyle} focus:outline-0`} placeholder="Search emotions..." onChange={(e) =>searchEmotion(e)} value={inputValue} type="text"/>
+                <input className={`${mainStyle} focus:outline-0 focus:border-0`} placeholder="Search emotions..." onChange={(e) =>searchEmotion(e)} value={inputValue} type="text"/>
             </span>
             <button className="text-slate-600 text-sm hover:text-blue-500" onClick={() => {
                 setSelectedValues([])
